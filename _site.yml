@@ -9,4 +9,6 @@ navbar:
       href: about.html
     - text: "Blog"
       href: blog.html
+    - text: "CV"
+      href: CV/CV.pdf
 output: distill::distill_article

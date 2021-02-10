@@ -1,0 +1,19 @@
+---
+title: "Welcome"
+
+author:
+  - name: Taylor
+date: 2021-02-09
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Here is my first ever blog post, where I talk about all things sourdough, plants, and data analysis. 
+
+

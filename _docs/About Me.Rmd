@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+description: |
+  A new article created using the Distill format.
+author:
+  - name: Taylor
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Interests
+
+I love baking (anything sourdough!),  crafts like macrame, camping, and anything that gets me outdoors! I am also a registered yoga teacher and have been practicing for over six years.
+
+
+
+
+

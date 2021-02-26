@@ -1,0 +1,12 @@
+---
+title: "My New Post"
+author: "Taylor Lockmann"
+date: "2/25/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This document is so great. Look at it!

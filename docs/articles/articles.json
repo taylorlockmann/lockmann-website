@@ -1,8 +1,8 @@
 [
   {
     "path": "articles/",
-    "title": "Untitled",
-    "description": "A new article created using the Distill format.",
+    "title": "About Me",
+    "description": {},
     "author": [
       {
         "name": "Taylor",
@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\r\nInterests\r\nI love baking (anything sourdough!), crafts like macrame, camping, and anything that gets me outdoors! I am also a registered yoga teacher and have been practicing for over six years.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-03-15T13:04:00-07:00",
+    "last_modified": "2021-03-15T16:31:25-07:00",
     "input_file": {}
   }
 ]

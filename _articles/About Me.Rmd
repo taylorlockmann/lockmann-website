@@ -1,7 +1,5 @@
 ---
-title: "Untitled"
-description: |
-  A new article created using the Distill format.
+title: "About Me"
 author:
   - name: Taylor
 date: "`r Sys.Date()`"

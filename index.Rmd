@@ -14,4 +14,4 @@ output:
 ---
  
 I am a Masters candidate at the Bren School of Environmental Science & Management, specializing in Conservation Planning with an emphasis on data science. 
-My passion is using scientific approaches to solve real-world problems, especially when it comes to using GIS and remote sensing to deepen understanding of natural disasters. 
+My passion is using scientific approaches to solve real-world problems, especially in using data science and GIS approaches to mitigate natural disasters. 

@@ -1,0 +1,19 @@
+---
+title: "Project Sample C"
+description: |
+  Using multicriteria analysis (MCA) to determine priority watersheds for conservation in southern Santa Barbara County.
+author:
+  - name: Taylor
+    url: {}
+date: 2021-03-15
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+![Using MCA to determine priority watersheds for conservation](HW4Lockmann_map.png)

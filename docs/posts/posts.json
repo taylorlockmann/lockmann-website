@@ -34,6 +34,57 @@
     "input_file": {}
   },
   {
+    "path": "posts/2021-03-15-project-sample-c/",
+    "title": "Project Sample C",
+    "description": "Using multicriteria analysis (MCA) to determine priority watersheds for conservation in southern Santa Barbara County.",
+    "author": [
+      {
+        "name": "Taylor",
+        "url": {}
+      }
+    ],
+    "date": "2021-03-15",
+    "categories": [],
+    "contents": "\r\nUsing MCA to determine priority watersheds for conservation\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-03-15T16:06:42-07:00",
+    "input_file": "project-sample-c.utf8.md"
+  },
+  {
+    "path": "posts/2021-03-15-project-sample-d/",
+    "title": "Project Sample D",
+    "description": "Principle components analysis (PCA) of nutritional values of breakfast cereals.",
+    "author": [
+      {
+        "name": "Taylor",
+        "url": {}
+      }
+    ],
+    "date": "2021-03-15",
+    "categories": [],
+    "contents": "\r\nIntroduction\r\nThis analysis examines the relationships between major nutritional values of breakfast cereals produced by major manufacturers General Mills Inc., Kellogg Co., Post Foods LLC, and the Quaker Oats Co. These manufacturers were chosen as they are the largest producers of breakfast cereals by sales. Nutritional data is provided by the USDA FoodData Central. The major nutritional values explored are kcal, protein, fat, carbs, sugar, and fiber content, in accordance with FDA guidance.\r\nSource: https://fdc.nal.usda.gov/index.html\r\nWrangling and PCA\r\n1. Wrangle data\r\n\r\n\r\n# Read in the data we're using, then clean it up a bit.\r\n\r\nusda_nutrients <- read.csv(here(\"data\", \"usda_nutrients.csv\")) %>% \r\n  clean_names() %>% \r\n  mutate(across(where(is.character), tolower))\r\n\r\n# Create a subset of only the data we will be using - in this case, breakfast cereals. We will be comparing the major nutrient values: kcal, protein, carbs, fat, sugar and fiber.\r\n\r\ncereals_nutrients <- usda_nutrients %>% \r\n  filter(food_group == \"breakfast cereals\") %>% # Select for breakfast cereals.\r\n  filter(mfg_name %in% c(\"kellogg, co.\", \"the quaker oats, co.\", \"general mills inc.\", \"post foods, llc\")) # Select specifically for the four brands we are evaluating. \r\n\r\n\r\n\r\n2. PCA\r\n\r\n\r\n# Now write the code for PCA with the dataset we created above.\r\n\r\ncereals_pca <- cereals_nutrients %>% # Create a pca dataset starting with the cereals subset we created above.\r\n  select(energy_kcal, ends_with(\"_g\")) %>% # Select the variables we will be performing PCA for\r\n  drop_na() %>% # Drop any NA values \r\n  scale() %>% # Scale the values, since they are not all measured in the same units\r\n  prcomp() # Principle components\r\n\r\ncereals_complete <- cereals_nutrients %>% \r\n  drop_na(energy_kcal, ends_with(\"_g\")) # Create a dataset to pull from, then drop observations with NA for our variables of interest.\r\n\r\nautoplot(cereals_pca,\r\n         data = cereals_complete, # Use this dataset to create aesthetics\r\n         colour = 'mfg_name',\r\n         loadings = TRUE, # Add loadings arrows\r\n         loadings.label = TRUE,\r\n         loadings.colour = \"black\",\r\n         loadings.label.colour = \"black\",\r\n         loadings.label.vjust = -0.5)+\r\n  theme_minimal()+\r\n  scale_x_continuous(expand = c(0.05,0.05))+ # Expand limits so we can read the arrow labels\r\n  scale_color_manual(labels = c(\"General Mills\", \"Kellogg\", \"Post Foods\", \"Quaker Oats\"), values = c(\"cornflowerblue\", \"coral\", \"forestgreen\", \"darkblue\"))+\r\n  labs(colour = \"Manufacturer\")\r\n\r\n\r\n\r\n\r\nFigure 1: Biplot depicting principle component analysis (PCA) of six different nutritional variables among breakfast cereals produced by four different manufacturers.\r\nSummary\r\nFrom the above Principle Component Analysis and biplot, we can draw the following takeaways:\r\nFiber and protein content appear most closely correlated, as these arrows are closest together, thus indicating that the variance explained by these variables are similar.\r\nSugar and fiber content have a negative correlation in breakfast cereals, as the angle between their arrows is much larger than 90 degrees and thus nearly opposite.\r\nProtein and fiber content have a slight negative loading value on Principle Component 1 (PC1), while fat, kcal, carb and sugar content all have a positive loading value on PC1.\r\nSugar content has the only positive loading value on Principle Component 2 (PC2), while all other variables have a negative loading value on PC2.\r\nHowever, upon adding the variances explained by PC1 and PC2, we see that this biplot only explains approximately 61.75% of variance among the data we are evaluating. This indicates that further analysis and consideration is needed to confidently evaluate correlation between variables in this data set.\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-03-15-project-sample-d/project-sample-d_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2021-03-15T16:17:01-07:00",
+    "input_file": "project-sample-d.utf8.md"
+  },
+  {
+    "path": "posts/2021-03-15-project-sample-e/",
+    "title": "Project Sample E",
+    "description": "Wordcloud and sentiment analysis of one of my favorite books!",
+    "author": [
+      {
+        "name": "Taylor",
+        "url": {}
+      }
+    ],
+    "date": "2021-03-15",
+    "categories": [],
+    "contents": "\r\n\r\n\r\nShow code\r\n\r\n# Read in the pdf\r\neragon_text <- pdf_text(here(\"data\", \"Eragon.pdf\"))\r\n\r\n\r\n\r\n1. Wordcloud of Eragon text\r\n\r\n\r\nShow code\r\n\r\n# make the data tidy\r\neragon_tidy <- data.frame(eragon_text) %>% \r\n  mutate(text_full = str_split(eragon_text, pattern = \"\\\\n\")) %>% \r\n  unnest(text_full)%>% \r\n  mutate(text_full = str_trim(text_full))\r\n\r\n# Make it into a dataframe\r\neragon_df <- eragon_tidy %>% \r\n  slice(-(1:12))\r\n\r\n# Create tokens\r\neragon_tokens <- eragon_df %>% \r\n  unnest_tokens(word, text_full) %>% \r\n  dplyr::select(-eragon_text)\r\n\r\n# Add up the wordcounts\r\neragon_wordcount <- eragon_tokens %>% \r\n  count(word)\r\n\r\n# Remove all stopwords\r\neragon_nonstopwords<- eragon_tokens %>% \r\n  anti_join(stop_words, by = \"word\")\r\n\r\n# Make a subset with counts of only non-stopwords\r\nnon_stop_counts <- eragon_nonstopwords %>% \r\n  count(word) %>% \r\n  filter(!(str_detect(word, \"\\\\d\"))) # Use this line to remove all rows of numbers\r\n\r\n# Make a subset for a wordcloud!\r\neragon_top100 <- non_stop_counts %>% \r\n  arrange(-n) %>% \r\n  filter(word != \"eragon\") %>% \r\n  filter(word != \"brom\") %>%\r\n  filter(word != \"murtagh\") %>%\r\n  filter(word != \"saphira\") %>%\r\n  slice(1:100)\r\n\r\n# Read in data for background:\r\negg_img <- readJPEG(here(\"data\", \"egg2.jpg\"))\r\n\r\n# Make a wordcloud!\r\neragon_cloud <- ggplot(data = eragon_top100, aes(label = word, color = n))+\r\n  annotation_custom(rasterGrob(egg_img,\r\n                               width = unit(1, \"npc\"),\r\n                               height = unit(1, \"npc\")),\r\n                    -Inf, Inf, -Inf, Inf)+\r\n  geom_text_wordcloud(aes(size =  n))+\r\n  scale_color_gradient(low = \"green\", high = \"white\")+\r\n  scale_size_area(max_size = 10)\r\n\r\neragon_cloud\r\n\r\n\r\n\r\n\r\nImage 1: Illustrated word cloud for the entire text of Eragon (excluding main character names). Apologies for the low quality background image, I refused to use a screenshot from the movie.\r\n2. Sentiment analysis of Eragon\r\n\r\n\r\nShow code\r\n\r\n# Perform sentiment analysis using nrc\r\n\r\neragon_nrc <- eragon_nonstopwords %>%\r\n  inner_join(get_sentiments(\"nrc\"), by = \"word\")\r\n\r\neragon_nrc_counts <- eragon_nrc %>% \r\n  count(sentiment)\r\n  \r\n\r\nggplot(data = eragon_nrc_counts, aes(reorder(sentiment, -n),n), fill = sentiment)+\r\n  geom_col(aes(fill = sentiment))+\r\n  coord_flip()+\r\n  theme_bw()+\r\n  labs(x = \"Sentiment\",\r\n       y = \"Count\")+\r\n  scale_fill_brewer(palette = \"Set3\")+\r\n  theme(legend.position = \"none\")\r\n\r\n\r\n\r\n\r\nImage 2: Sentiment analysis of the entire Eragon text. We can see that “negative,” “positive,” and “fear” are the sentiments with the highest counts in the book, while “disgust” and “surprise” are both close in last place.\r\nSource: Paolini, C. (2003). Eragon. New York: Alfred A. Knopf. Accessed through Academia.edu\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-03-15-project-sample-e/project-sample-e_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2021-03-15T16:23:50-07:00",
+    "input_file": "project-sample-e.utf8.md"
+  },
+  {
     "path": "posts/2021-02-09-welcome/",
     "title": "Welcome",
     "description": {},

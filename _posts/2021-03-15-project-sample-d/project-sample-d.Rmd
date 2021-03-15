@@ -1,0 +1,88 @@
+---
+title: "Project Sample D"
+description: |
+  Principle components analysis (PCA) of nutritional values of breakfast cereals.
+author:
+  - name: Taylor
+    url: {}
+date: 2021-03-15
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(janitor)
+library(here)
+library(ggfortify)
+library(readxl)
+```
+
+### Introduction
+
+This analysis examines the relationships between major nutritional values of breakfast cereals produced by major manufacturers General Mills Inc., Kellogg Co., Post Foods LLC, and the Quaker Oats Co. These manufacturers were chosen as they are the largest producers of breakfast cereals by sales. Nutritional data is provided by the USDA FoodData Central. The major nutritional values explored are kcal, protein, fat, carbs, sugar, and fiber content, in accordance with FDA guidance. 
+
+Source: https://fdc.nal.usda.gov/index.html
+
+### Wrangling and PCA
+
+#### 1. Wrangle data
+
+```{r}
+# Read in the data we're using, then clean it up a bit.
+
+usda_nutrients <- read.csv(here("data", "usda_nutrients.csv")) %>% 
+  clean_names() %>% 
+  mutate(across(where(is.character), tolower))
+
+# Create a subset of only the data we will be using - in this case, breakfast cereals. We will be comparing the major nutrient values: kcal, protein, carbs, fat, sugar and fiber.
+
+cereals_nutrients <- usda_nutrients %>% 
+  filter(food_group == "breakfast cereals") %>% # Select for breakfast cereals.
+  filter(mfg_name %in% c("kellogg, co.", "the quaker oats, co.", "general mills inc.", "post foods, llc")) # Select specifically for the four brands we are evaluating. 
+
+```
+
+#### 2. PCA
+```{r}
+# Now write the code for PCA with the dataset we created above.
+
+cereals_pca <- cereals_nutrients %>% # Create a pca dataset starting with the cereals subset we created above.
+  select(energy_kcal, ends_with("_g")) %>% # Select the variables we will be performing PCA for
+  drop_na() %>% # Drop any NA values 
+  scale() %>% # Scale the values, since they are not all measured in the same units
+  prcomp() # Principle components
+
+cereals_complete <- cereals_nutrients %>% 
+  drop_na(energy_kcal, ends_with("_g")) # Create a dataset to pull from, then drop observations with NA for our variables of interest.
+
+autoplot(cereals_pca,
+         data = cereals_complete, # Use this dataset to create aesthetics
+         colour = 'mfg_name',
+         loadings = TRUE, # Add loadings arrows
+         loadings.label = TRUE,
+         loadings.colour = "black",
+         loadings.label.colour = "black",
+         loadings.label.vjust = -0.5)+
+  theme_minimal()+
+  scale_x_continuous(expand = c(0.05,0.05))+ # Expand limits so we can read the arrow labels
+  scale_color_manual(labels = c("General Mills", "Kellogg", "Post Foods", "Quaker Oats"), values = c("cornflowerblue", "coral", "forestgreen", "darkblue"))+
+  labs(colour = "Manufacturer")
+```
+
+
+**Figure 1:** Biplot depicting principle component analysis (PCA) of six different nutritional variables among breakfast cereals produced by four different manufacturers. 
+
+
+### Summary
+
+From the above Principle Component Analysis and biplot, we can draw the following takeaways:
+
+* Fiber and protein content appear most closely correlated, as these arrows are closest together, thus indicating that the variance explained by these variables are similar.
+* Sugar and fiber content have a negative correlation in breakfast cereals, as the angle between their arrows is much larger than 90 degrees and thus nearly opposite. 
+* Protein and fiber content have a slight negative loading value on Principle Component 1 (PC1), while fat, kcal, carb and sugar content all have a positive loading value on PC1. 
+* Sugar content has the only positive loading value on Principle Component 2 (PC2), while all other variables have a negative loading value on PC2.
+* However, upon adding the variances explained by PC1 and PC2, we see that this biplot only explains approximately 61.75% of variance among the data we are evaluating. This indicates that further analysis and consideration is needed to confidently evaluate correlation between variables in this data set.
+

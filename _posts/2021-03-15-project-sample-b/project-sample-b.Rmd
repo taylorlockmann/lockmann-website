@@ -1,0 +1,201 @@
+---
+title: "Project Sample B"
+description: |
+  Using binary logistic regression to test the feasibility of using plant height, canopy length, canopy width, and number of green leaves to determine species of palmetto.
+author:
+  - name: Taylor
+    url: {}
+date: 2021-03-15
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+library(tidyverse)
+library(janitor)
+library(here)
+library(ggfortify)
+library(lubridate)
+library(plotly)
+library(GGally)
+library(broom)
+library(jtools)
+library(kableExtra)
+library(gtsummary)
+```
+
+```{r}
+# Read in data
+
+palmetto_data <- read_csv(here("data", "palmetto.csv"), 
+                          col_types = cols(.default = 'c')) %>% 
+  mutate(height = as.numeric(height)) %>% 
+  mutate(length = as.numeric(length)) %>% 
+  mutate(width = as.numeric(width)) %>% 
+  mutate(green_lvs = as.numeric(green_lvs))
+```
+
+# Overview
+
+This report evaluates data on two palmetto species, and uses binary logistic regression to test the feasibility of using certain indicator variables (tree height, canopy length, canopy width, and number of green leaves) to determine the trees' species. Species 1 represents Serenoa repens, while Species 2 represents Sabal etonia. For the purposes of this analysis, I will be simply referring to them as "Species 1" and "Species 2" respectively unless stated otherwise.
+
+**Data source:** Abrahamson, W.G. 2019. Survival, growth and biomass estimates of two dominant palmetto species of south-central Florida from 1981 - 2017, ongoing at 5-year intervals ver 1. Environmental Data Initiative. https://doi.org/10.6073/pasta/f2f96ec76fbbd4b9db431c79a770c4d5
+
+
+
+# Results
+
+## 1. Exploratory Visualizations {.tabset}
+
+
+### Principle Components Analysis (PCA) 
+
+```{r}
+# Make PCA subset
+
+palmetto_pca <- palmetto_data %>% 
+  select(height, length, width, green_lvs) %>% 
+  drop_na() %>% 
+  scale() %>% 
+  prcomp()
+
+# Make another subset for labeling
+palmetto_complete <- palmetto_data %>% 
+  drop_na(height, length, width, green_lvs)
+
+# Make PCA biplot
+
+autoplot(palmetto_pca,
+         data = palmetto_complete,
+         colour = "species",
+         size = 1,
+         alpha = 0.7,
+         loadings = TRUE,
+         loadings.label = TRUE)+
+  scale_color_manual(values = c("goldenrod", "forestgreen"))+
+  theme_bw()
+```
+
+
+**Figure 1:** PCA biplot of our palmetto data. Principle component 1 (PC1) accounts for ~69% of variance in our data, and principle component 2 (PC2) accounts for ~20% of the variance in our data.
+
+
+#### Key takeaways:
+
+- From our biplot, we can see the number of green leaves on a tree and the length of canopy have almost no correlation, as their loadings are at approximately 90 degrees to each other. 
+- Tree height, canopy width, and canopy length all appear to be closely (positively) correlated, as they are loaded closely together.
+- Additionally, it appears the two species begin to diverge in similarity along increasing PC1. 
+
+
+### Tree Height vs. Canopy Length
+```{r}
+# Other dataviz
+
+ggplot(data = palmetto_data, aes(x = length, y = height))+
+  geom_point(aes(color=species), alpha = 0.7)+
+  scale_color_manual(values = c("goldenrod", "forestgreen"))+
+  theme_bw()+
+  labs(x = "Canopy Length",
+       y = "Height")
+```
+
+
+**Figure 2:** Height of trees vs. canopy length.
+
+
+#### Key takeaways:
+
+- We can see that in both species, canopy length generally increases with increasing tree height.
+- However, Species 2 seems to tend to have a lower height overall.
+
+
+
+
+
+
+
+
+
+
+
+## 2. Binary Logistic Regression
+
+#### Variables:
+- Tree height (cm)
+- Canopy length (cm)
+- Canopy width(cm)
+- Number of green leaves
+
+For this evaluation, our "0" reference level is Species 1, or Serenoa repens. Since a binary logistic regression calculates the probability of the non-zero factor, this indicates that our output will evaluate the probability that an observation is Species 2, or Sabal etonia. 
+
+```{r}
+# Make a subset with our species numbers as factors. 
+
+palmetto_blr_data <- palmetto_complete %>% 
+  mutate(species = as.factor(species))
+
+# Double check the factor levels, and we see that "Species 1" is our 0 reference level. So left-hand side of equation will be probability of SPECIES 2.
+
+palmetto_blr <- glm(species ~ height + length + width + green_lvs,
+                    data = palmetto_blr_data,
+                    family = "binomial")
+
+tidy_palmetto_blr <- broom::tidy(palmetto_blr)
+
+final_palmetto_blr <- tidy_palmetto_blr %>% 
+  mutate(p.value=case_when(p.value <= 0.0001 ~ "<0.0001"))
+
+kbl(
+  final_palmetto_blr,
+  col.names = c("Predictor Variable", "Coefficient", "Std. Error", "Statistic", "p-value"),
+  align = c("l", "c", "c", "c", "c"),
+   digits = 3,
+  caption = "Table 1: Results of binary linear regression on palmetto data.") %>% 
+  kable_styling(bootstrap_options = "striped",
+                full_width = F)
+```
+
+
+
+## 3. Success of Regression Model
+
+```{r}
+# What are the actual probabilities of being Species 2 for each of the existing observations in our palmetto_complete data frame?
+
+# Create the fitted blr - probability that an observation is Species 2.
+
+blr_fitted <- palmetto_blr %>% 
+  broom::augment(type.predict = "response")
+
+# Wrangle this dataset into something usable for an output
+
+blr_correct <- blr_fitted %>% 
+  mutate(predicted = case_when(.fitted >= 0.50 ~ 2,
+                               .fitted <= 0.50 ~ 1)) %>% 
+  mutate(correct = case_when(predicted == species ~ "Correct",
+                             TRUE ~ "Incorrect")) %>% 
+  mutate(species = case_when(species == 1 ~ "Serenoa repens",
+                             species == 2 ~ "Sabal etonia")) %>%
+  select(species, .fitted, predicted, correct) %>% 
+  group_by(species, correct) %>% 
+  summarize(number_correct = n()) %>% 
+  pivot_wider(names_from = correct, values_from = number_correct) %>%
+  mutate(Percent_Correct = (Correct/(Incorrect+Correct)*100))
+
+# Now make it pretty!
+
+kbl(
+  blr_correct,
+  col.names = c("Species", "Correctly Classified", "Incorrectly Classified", "Percent Correctly Classified"),
+  digits = 3,
+  align = c("l", "c", "c", "c"),
+  caption =  "Table 2: Successful prediction of species by binary linear regression on palmetto data.") %>% 
+  kable_styling(bootstrap_options = "striped",
+                full_width = F) 
+  
+```

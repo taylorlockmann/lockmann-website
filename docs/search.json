@@ -5,28 +5,28 @@
       "title": "About",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-25T16:53:58-08:00"
+      "last_modified": "2021-03-15T15:41:11-07:00"
     },
     {
       "path": "blog.html",
-      "title": "Blog",
+      "title": "Projects",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-25T16:53:59-08:00"
+      "last_modified": "2021-03-15T15:41:13-07:00"
     },
     {
       "path": "index.html",
       "title": "Taylor Lockmann",
       "author": [],
-      "contents": "\r\n\r\n          \r\n          \r\n          Taylor Lockmann\r\n          \r\n          \r\n          Home\r\n          About\r\n          Blog\r\n          CV\r\n          Notes\r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              Taylor Lockmann\r\n            \r\n            \r\n              \r\n                \r\n                    \r\n                      \r\n                        LinkedIn\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                        GitHub\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                        Email\r\n                      \r\n                    \r\n                  \r\n                                  \r\n            \r\n          \r\n        \r\n        \r\n        \r\n          \r\n            I am a Masters candidate at the Bren School of Environmental Science & Management, specializing in Conservation Planning with an emphasis on data science. My passion is using scientific approaches to solve real-world problems, especially when it comes to using GIS and remote sensing to deepen understanding of natural disasters.\r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              Taylor Lockmann\r\n            \r\n            \r\n              \r\n                \r\n                                    \r\n                    \r\n                      LinkedIn\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      GitHub\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      Email\r\n                    \r\n                  \r\n                                  \r\n              \r\n            \r\n            \r\n              I am a Masters candidate at the Bren School of Environmental Science & Management, specializing in Conservation Planning with an emphasis on data science. My passion is using scientific approaches to solve real-world problems, especially when it comes to using GIS and remote sensing to deepen understanding of natural disasters.\r\n            \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
-      "last_modified": "2021-02-25T16:54:00-08:00"
+      "contents": "\r\n\r\n          \r\n          \r\n          Taylor Lockmann\r\n          \r\n          \r\n          Home\r\n          About\r\n          Projects\r\n          CV\r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              Taylor Lockmann\r\n            \r\n            \r\n              \r\n                \r\n                    \r\n                      \r\n                        LinkedIn\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                        GitHub\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                        Email\r\n                      \r\n                    \r\n                  \r\n                                  \r\n            \r\n          \r\n        \r\n        \r\n        \r\n          \r\n            I am a Masters candidate at the Bren School of Environmental Science & Management, specializing in Conservation Planning with an emphasis on data science. My passion is using scientific approaches to solve real-world problems, especially when it comes to using GIS and remote sensing to deepen understanding of natural disasters.\r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              Taylor Lockmann\r\n            \r\n            \r\n              \r\n                \r\n                                    \r\n                    \r\n                      LinkedIn\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      GitHub\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      Email\r\n                    \r\n                  \r\n                                  \r\n              \r\n            \r\n            \r\n              I am a Masters candidate at the Bren School of Environmental Science & Management, specializing in Conservation Planning with an emphasis on data science. My passion is using scientific approaches to solve real-world problems, especially when it comes to using GIS and remote sensing to deepen understanding of natural disasters.\r\n            \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
+      "last_modified": "2021-03-15T15:41:13-07:00"
     },
     {
       "path": "notes.html",
       "title": "Notes",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-02-25T16:54:02-08:00"
+      "last_modified": "2021-03-15T15:41:14-07:00"
     }
   ],
   "collections": ["posts/posts.json", "articles/articles.json", "notes/notes.json"]

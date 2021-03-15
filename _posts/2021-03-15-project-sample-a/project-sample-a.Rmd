@@ -1,0 +1,96 @@
+---
+title: "Project Sample A"
+description: |
+  An exploration of cetacean species richness on the California coast.
+author:
+  - name: Taylor
+    url: {}
+date: 2021-03-15
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: true
+---
+
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(raster)
+library(tidyverse)
+library(here)
+library(sf)
+library(fasterize)
+library(rnaturalearth)
+```
+
+```{r}
+# Read in the data all together
+species <- here("data","ca_cetaceans", "ca_cetaceans")
+species_files <- dir(species, full.names = TRUE, pattern = "*.tif")
+
+# Rasterize all these files together using raster::stack
+cetaceans_data <- raster::stack(species_files)
+
+# Write a function to determine if species are present in a cell, with a threshold of 0.6 meaning "present"
+is_present <- function(x, thresh = .6){
+  y <- ifelse(x >= thresh, 1, 0)
+  return(y)
+}
+
+# Apply the threshold function to our stack
+species_richness <- calc(cetaceans_data, fun = is_present)
+
+# Find out how many species are in each cell
+species_richness1 <- calc(species_richness, fun = sum, na.rm = TRUE)
+
+```
+
+```{r, message = FALSE, warning=FALSE, results='hide'}
+# Now create the file to use for the CA coastline
+
+states <- ne_download(scale = 110, type = "states", category = "cultural", returnclass = "sf")
+
+ca_state <- states %>% 
+  filter(name == "California")
+```
+
+```{r}
+# Crop the species raster to match the CA coastline
+species_raster_cropped <- crop(species_richness1, extent(ca_state))
+
+# Now turn this cropped raster into a dataframe
+species_richness_df <- raster::rasterToPoints(species_raster_cropped) %>%
+  as.data.frame() %>% 
+  filter(layer != 0) # Filter out cells that have no data in them
+
+# Now we have the species richness dataframe with which to make our ggplot!
+```
+
+
+```{r, fig.dim = c(8,6)}
+# Now plot everything together
+
+ggplot()+
+  geom_raster(data = species_richness_df, aes(x = x, y = y, fill = layer))+
+  geom_sf(data = ca_state, fill = "lemonchiffon2")+
+  scale_fill_gradient(low = "white", high = "mediumblue", name = "Likely number of cetacean species present")+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = "grey90"))+
+  labs( x = "Longitude",
+        y = "Latitude",
+        title = "Cetacean species richness on the California coast")
+```
+
+
+
+**Figure 1:** Map of species richness of cetaceans off the coast of California. Species richness is defined as the number of species likely to be present in a certain area. For a species to be considered "present," a likelihood threshold of 0.6 was observed, meaning that there had to be a minimum 60% chance that a species would be present in order for it to be considered "present" in our analysis. 
+
+
+*Note:* I purposely did not clip the extent of the map because I liked the aesthetics of seeing the whole state shape rather than just the extent covered by the species raster. To clip I would have inserted a line in my ggplot of `coord_sf(xlim = c(-125, -115), ylim = c(32, 38))`.
+
+**Sources:** 
+
+- Kaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., & Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species. www.aquamaps.org
+- Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.
+
+##### End Project Sample A

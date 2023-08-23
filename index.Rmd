@@ -13,5 +13,5 @@ output:
   postcards::trestles
 ---
  
-I am a Masters candidate at the Bren School of Environmental Science & Management, specializing in Conservation Planning with an emphasis on data science. 
-My passion is using scientific approaches to solve real-world problems, especially in using data science and GIS approaches to mitigate natural disasters. 
+I am an environmental data scientist with a passion for using sound science and GIS tools to efficiently manage scarce resources in the face of a changing climate.
+Outside of my work, I love being on the ocean with my outrigger paddling team, baking, and all things outdoors.

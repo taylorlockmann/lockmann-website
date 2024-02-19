@@ -1,6 +1,7 @@
-name: "Taylor Lockmann"
-title: "Taylor Lockmann"
+name: "Taylor Yorkey"
+title: "Taylor Yorkey"
 output_dir: "docs"
+theme: theme.css 
 navbar:
   right:
     - text: "Home"

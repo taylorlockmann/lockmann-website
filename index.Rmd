@@ -1,5 +1,5 @@
 ---
-title: "Taylor Lockmann"
+title: "Taylor Yorkey"
 image: "Lockmann_Portrait.jpg"
 links:
   - label: LinkedIn
@@ -10,7 +10,7 @@ links:
     url: "mailto:tlockmann@gmail.com"
 site: distill::distill_website
 output:
-  postcards::trestles
+  postcards::jolla
 ---
  
 I am an environmental data scientist with a passion for using sound science and GIS tools to efficiently manage scarce resources in the face of a changing climate.

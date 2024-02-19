@@ -54,6 +54,10 @@ job_data1 %>%
   gt_preview()
 ```
 
+
+
+
+
 # Sankey Diagram using `networkD3`
 
 The package I settled on using was `networkD3`. [See more about this package here.](https://rpubs.com/DragonflyStats/Sankey-networkD3)
@@ -72,7 +76,7 @@ job_data2 %>%
 
 See the annotated code below:
 
-```{r}
+```{r layout = "l-screen"}
 # Read in necessary packages
 library(networkD3)
 library(here)
@@ -92,7 +96,8 @@ nodes <- data.frame(
            as.character(counts_df$to)) %>% unique()
 )
 
-# With networkD3, connection must be provided using id, not using real name like in the links dataframe. So we need to reformat it.
+# With networkD3, connection must be provided using id, not using real name like in the links dataframe. 
+# So we need to reformat it.
 counts_df$IDsource <- match(counts_df$from, nodes$name)-1
 counts_df$IDtarget <- match(counts_df$to, nodes$name)-1
 
@@ -116,9 +121,9 @@ q
 
 ## Adding counts using JavaScript
 
-I wanted to add the counts from each node to the next, and the best way I could find to do this was using JavaScript. Now I know absolutely nothing about JavaScript, but I was able to lift and shift some code into this diagram thanks to [this Stack Overflow post](https://stackoverflow.com/questions/71264918/r-networkd3-sankey-add-value-to-node-label/71265618#71265618)
+I wanted to add the counts from each node to the next, and the best way I could find to do this was using JavaScript. Now I know absolutely nothing about JavaScript, but I was able to lift and shift some code into this diagram thanks to [this Stack Overflow post](https://stackoverflow.com/questions/71264918/r-networkd3-sankey-add-value-to-node-label/71265618#71265618).
 
-```{r}
+```{r layout = "l-screen"}
 # Add node count to the diagram
 node_count <-
   'function(el, x){

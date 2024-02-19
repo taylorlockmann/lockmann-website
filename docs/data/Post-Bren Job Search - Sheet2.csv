@@ -1,0 +1,77 @@
+from,to
+applied,rejected
+applied,rejected
+applied,ghosted
+applied,first interview
+first interview,offered position
+offered position,turned down
+applied,rejected
+applied,rejected
+applied,first interview
+first interview,references checked
+references checked,offered position
+offered position,negotiated
+negotiated,turned down
+applied,rejected
+applied,referred to hiring
+referred to hiring,ghosted
+applied,rejected
+applied,first interview
+first interview,rejected
+applied,first interview
+first interview,rejected
+applied,ghosted
+applied,first interview
+first interview,offered position
+offered position,accepted
+accepted,finished internship
+applied,first interview
+first interview,second interview
+second interview,offered position
+offered position,negotiated
+negotiated,accepted
+accepted,quit
+applied,rejected
+applied,ghosted
+applied,rejected
+applied,referred to hiring
+referred to hiring,ghosted
+applied,rejected
+applied,ghosted
+applied,ghosted
+applied,rejected
+applied,ghosted
+applied,ghosted
+applied,ghosted
+applied,ghosted
+applied,networked
+networked ,fell through
+applied,rejected
+applied,ghosted
+applied,rejected
+applied,first interview
+first interview,second interview
+second interview,references checked
+references checked,fell through
+applied,ghosted
+applied,ghosted
+applied,ghosted
+applied,first interview
+first interview,declined
+applied,ghosted
+applied,fell through
+applied,first interview
+first interview,ghosted
+applied,rejected
+applied,rejected
+applied,phone screening
+phone screening,first interview
+first interview,panel interview
+panel interview,final interview
+final interview,offered position
+offered position,declined
+phone screening,first interview
+first interview,skills test
+skills test,panel interview
+panel interview,offered position
+offered position,accepted

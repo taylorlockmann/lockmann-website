@@ -1,0 +1,139 @@
+---
+title: 'A Lesson in Patience: The classic job search Sankey diagram'
+description: |
+  Visualizing the job search process using a Sankey diagram
+author:
+  - name: Taylor
+    url: {}
+date: 2024-01-27
+output:   
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Background
+
+After graduating with my masters in 2022, I found myself on the classic post-grad job hunt. I knew without a doubt that I didn't want to pursue a PhD, so the only option left was work (I was also _very_ tired of being a broke college student). So with a newly minted resume and an all-too-optimistic view of the public sector and NGOs, I set out on that fateful quest.
+
+Besides the two years of grad school that had helped me prepare for the job search, the best foresight I had was to track my job applications and the steps taken throughout each. You know, for *science*. 
+
+Many months later, after dozens of sleepless nights, hundreds of resume revisions, and one awful (short-lived) job experience, I finally landed at the company I work with now. And let me tell you, dear reader, that the pretty tales I had been told about professional networking and shaking hands at mixers was not at all what I encountered in the post-Covid job world. I never even got to use the trick of holding a wine glass and food plate in one hand in order to shake hands with the other we were taught.
+
+But I did learn a *lot* about patience, persistence, professionalism, and myself (yeah, yeah, cliche I know). And once the job search was officially over, I also learned how to make a Sankey diagram, which I assume is what you are actually here for. 
+
+While many data-related subReddits may be oversaturated with these visuals, I believe them to be one of the more reader-friendly ways of digesting a long and varied process quickly. Through my process I learned several ways to create a Sankey diagram, which I have chronicled below.
+
+# What is a Sankey diagram?
+
+A Sankey diagram show the flow of something from one state to the next. 
+
+**Insert more background here**
+**Maybe include a sample**
+
+# Data Collection
+
+
+My goal in creating this Sankey diagram of my job search was to visualize each application's life history. I tried to bin each phase of the application project into a simple to understand "Step". Every time I heard back from a job app, I would add the response to the next "Step" column. After much tidying of my tracking Google Sheet, this is what the raw dataset looked like:
+
+
+```{r}
+library(tidyverse)
+library(networkD3)
+library(here)
+library(stringr)
+library(gt)
+
+# Read in job data
+job_data1 <- read_csv(here("data", "Post-Bren Job Search - Sheet1.csv"))
+
+job_data1 %>% 
+  gt_preview()
+```
+
+# Sankey Diagram using `networkD3`
+
+The package I settled on using was `networkD3`. [See more about this package here.](https://rpubs.com/DragonflyStats/Sankey-networkD3)
+
+One notable feature of this package is that the data must be structured with only 2 columns: a "from" column and a "to" column. While I'm sure there are ways to do this more elegantly through code, I did it by manually re-working my data, which I use for this diagram. This was the result:
+
+```{r}
+# Read in job data
+job_data2 <- read_csv(here("data", "Post-Bren Job Search - Sheet2.csv"))
+
+# Create a preview
+job_data2 %>% 
+  gt_preview()
+```
+
+
+See the annotated code below:
+
+```{r}
+# Read in necessary packages
+library(networkD3)
+library(here)
+library(stringr)
+
+# Count the number of occurrences of each combination of "from" and "to"
+counts <- dplyr::count(job_data2, from, to) %>% 
+  ungroup() %>% 
+  rename("number" = "n")
+
+# Turn our counts data into a simple data frame
+counts_df <- data.frame(counts)
+
+# Create a data frame of nodes
+nodes <- data.frame(
+  name = c(as.character(counts_df$from),
+           as.character(counts_df$to)) %>% unique()
+)
+
+# With networkD3, connection must be provided using id, not using real name like in the links dataframe. So we need to reformat it.
+counts_df$IDsource <- match(counts_df$from, nodes$name)-1
+counts_df$IDtarget <- match(counts_df$to, nodes$name)-1
+
+# Turn the nodes into an official title
+nodes$name <- str_to_title(nodes$name)
+
+# Now create the diagram!
+q <- sankeyNetwork(Links = counts_df, 
+                   Nodes = nodes,
+                   Source = "IDsource", 
+                   Target = "IDtarget",
+                   Value = "number", 
+                   NodeID = "name",
+                   sinksRight = FALSE,
+                   fontSize = 12)
+
+q
+
+
+```
+
+## Adding counts using JavaScript
+
+I wanted to add the counts from each node to the next, and the best way I could find to do this was using JavaScript. Now I know absolutely nothing about JavaScript, but I was able to lift and shift some code into this diagram thanks to [this Stack Overflow post](https://stackoverflow.com/questions/71264918/r-networkd3-sankey-add-value-to-node-label/71265618#71265618)
+
+```{r}
+# Add node count to the diagram
+node_count <-
+  'function(el, x){
+    d3.select(el).selectAll(".node text")
+      .text(d => d.name + " (" + d.value + ")");
+  }'
+
+
+htmlwidgets::onRender(x = q, jsCode = node_count)
+```
+
+The last item of this project would be to move the "Applied" label node to the other side of the starting node. This is also possible to do with JavaScript, but I have not been able to find a best way to do this at the time of publishing. If you have a neat trick to do this, please drop me a line! 
+
+
+
+Thanks for reading! 
+
+-T

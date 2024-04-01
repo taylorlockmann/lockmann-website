@@ -2210,7 +2210,7 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #000000;
+  --title-color:     #264653;
   --header-color:    #264653;
   --body-color:      rgba(31, 31, 31, 1);
   --aside-color:     rgba(31, 31, 31, 1);
@@ -2221,6 +2221,14 @@ html {
   --body-font:       "Montserrat", sans-serif;
   --navbar-font:     "Gelasio", serif;  /* websites + blogs only */
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Gelasio";
+  letter-spacing: 2px;  
+  line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
+  color: #264653;
+}
+
 
 /*-- ARTICLE METADATA --*/
 d-byline {
@@ -2249,10 +2257,14 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       #f2f2f2; /*edited*/
+  --text-color:       #212D3C; /*edited*/
   --text-size:        15px;
   --hover-color:      white;
-  --bkgd-color:       #264653; /*edited*/
+  /*--bkgd-color:       #264653; /*edited*/
+  
+  /* background-image for fade-to-white color of navbar */
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), #F4A261);
+  background-color: transparent;
 }
 
 .distill-site-footer {

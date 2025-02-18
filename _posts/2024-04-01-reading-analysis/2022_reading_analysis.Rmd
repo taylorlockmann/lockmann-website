@@ -9,6 +9,7 @@ date: 2024-04-02
 output:
   distill::distill_article:
     self_contained: false
+preview: "images/reading-thumbnail.png"
 ---
 
 ```{r setup, include=FALSE}
@@ -82,9 +83,9 @@ tab1
 barplot(tab1)
 ```
 
-This graph is terrible. In essence, it shows the number of reading sessions per book. But it doesn't even list all of the book titles, and is very rudimentary. I'll be using `r ggplot2` to jazz it up a bit.
+This graph is terrible. In essence, it shows the number of reading sessions per book. But it doesn't even list all of the book titles, and is very rudimentary. I'll be using `ggplot2` to jazz it up a bit.
 
-### Using `r ggplot2`
+### Using `ggplot2`
 
 ```{r}
 # First, create a summary table
@@ -114,7 +115,7 @@ ggplot(data = summary, aes(book_title, sessions_count))+
 - *Nonfiction:* those books that were nonfiction but did not fall into either of the first two categories.
 - *Fantasy:* I basically lumped all fiction into one fantasy category.
 
-**Side note:** Did you know `r ggplot2` can make pie charts?? I didn't until I wanted to make this chart. See code below for how.
+**Side note:** Did you know `ggplot2` can make pie charts?? I didn't until I wanted to make this chart. See code below for how.
 
 ```{r}
 # Group data by category and number of books
@@ -145,7 +146,7 @@ ggplot(pie_summary)+
 
 ### Interactive Pie Chart!
 
-I wanted to make a version of this pie chart that includes interactive elements, which we can do using `r plotly`. I'll keep it simple here, and perhaps do a deeper dive of `r plotly` in a later post. 
+I wanted to make a version of this pie chart that includes interactive elements, which we can do using `plotly`. I'll keep it simple here, and perhaps do a deeper dive of `plotly` in a later post. 
 
 ```{r}
 library(plotly)
@@ -228,7 +229,7 @@ breaks <- c("00:00:00", "03:00:00", "06:00:00", "09:00:00", "12:00:00", "15:00:0
 timeseries_colors <- c('#CC6677', '#88CCEE', '#882255', '#44AA99')
 
 # Graph code
-clean_data %>% 
+thumbnail <- clean_data %>% 
   ggplot(aes(x = date, y = start))+
   geom_point(aes(size = pages_read, color = genre))+
   scale_color_manual(values = timeseries_colors)+
@@ -248,6 +249,10 @@ clean_data %>%
         legend.background = element_rect(fill = "#f6f6f6"),
         legend.key = element_rect(fill = "#f6f6f6")
   )
+thumbnail
+
+# Save for thumbnail
+# ggsave("reading-thumbnail.png", plot = thumbnail, width = 6, height = 4, dpi = 300)
 ```
 
 This graph shows us the time of day of the reading session, as well as the genre and pages read for each reading session, all across the whole year. Much more advanced!

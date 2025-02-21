@@ -11,5 +11,5 @@ navbar:
     - text: "Projects"
       href: blog.html
     - text: "CV"
-      href: CV/Lockmann_Resume.pdf
+      href: CV/Yorkey_Resume_Jan_2025.pdf
 output: distill::distill_article

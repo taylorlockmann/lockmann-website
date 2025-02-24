@@ -2182,97 +2182,178 @@ d-appendix {
 /* Add any additional CSS rules below                      */
 </style>
 <style type="text/css">
-/* base variables */
+/* ============================
+   Custom Distill Theme
+   ============================ */
 
-/* Edit the CSS properties in this file to create a custom
-   Distill theme. Only edit values in the right column
-   for each row; values shown are the CSS defaults.
-   To return any property to the default,
-   you may set its value to: unset
-   All rows must end with a semi-colon.                      */
-
-/* Optional: embed custom fonts here with `@import`          */
-/* This must remain at the top of this file.                 */
+/* Import custom fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Gelasio');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
-
+/* ============================
+   Base Variables
+   ============================ */
 
 html {
-  /*-- Main font sizes --*/
-  --title-size:      50px;
-  --body-size:       1.06rem;
+  /* Main font sizes */
+  --title-size:      48px;
+  --body-size:       1.1rem;
   --code-size:       14px;
-  --aside-size:      12px;
-  --fig-cap-size:    13px;
-  /*-- Main font colors --*/
+  --aside-size:      13px;
+  --fig-cap-size:    14px;
+  
+  /* Main font colors */
   --title-color:     #264653;
   --header-color:    #264653;
-  --body-color:      rgba(31, 31, 31, 1);
-  --aside-color:     rgba(31, 31, 31, 1);
-  --fig-cap-color:   rgba(31, 31, 31, 1);
-  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --body-color:      #1F1F1F;
+  --aside-color:     #4A4A4A;
+  --fig-cap-color:   #666666;
+  
+  /* Typography */
   --heading-font:    "Gelasio", serif;
   --mono-font:       monospace;
   --body-font:       "Montserrat", sans-serif;
-  --navbar-font:     "Gelasio", serif;  /* websites + blogs only */
+  --navbar-font:     "Gelasio", serif;  /* Websites & blogs only */
 }
+
+
+/* ============================
+   Headings
+   ============================ */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Gelasio";
-  letter-spacing: 2px;  
-  line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
-  color: #264653;
+  font-family: var(--heading-font);
+  letter-spacing: 1.5px;  
+  line-height: 1.8rem; /* Prevents wrapping headers from overlapping */ 
+  color: var(--header-color);
 }
 
 
-/*-- ARTICLE METADATA --*/
+/* ============================
+   Article Metadata
+   ============================ */
 d-byline {
-  --heading-size:    0.6rem;
-  --heading-color:   rgba(0, 0, 0, 0.5);
-  --body-size:       0.8rem;
-  --body-color:      rgba(0, 0, 0, 0.8);
+  --heading-size:    0.7rem;
+  --heading-color:   rgba(0, 0, 0, 0.55);
+  --body-size:       0.85rem;
+  --body-color:      rgba(0, 0, 0, 0.85);
 }
 
-/*-- ARTICLE TABLE OF CONTENTS --*/
+
+/* ============================
+   Article Table of Contents
+   ============================ */
 .d-contents {
   --heading-size:    18px;
-  --contents-size:   13px;
+  --contents-size:   14px;
 }
 
-/*-- ARTICLE APPENDIX --*/
+
+/* ============================
+   Appendix
+   ============================ */
 d-appendix {
-  --heading-size:    15px;
+  --heading-size:    16px;
   --heading-color:   rgba(0, 0, 0, 0.65);
-  --text-size:       0.8em;
-  --text-color:      rgba(0, 0, 0, 0.5);
+  --text-size:       0.9em;
+  --text-color:      rgba(0, 0, 0, 0.6);
 }
 
-/*-- WEBSITE HEADER + FOOTER --*/
-/* These properties only apply to Distill sites and blogs  */
 
+/* ============================
+   Website Header & Footer (Distill Sites & Blogs)
+   ============================ */
 .distill-site-header {
-  --title-size:       18px;
-  --text-color:       #212D3C; /*edited*/
-  --text-size:        15px;
+  --title-size:       20px;
+  --text-color:       #212D3C; 
+  --text-size:        16px;
   --hover-color:      white;
-  /*--bkgd-color:       #264653; /*edited*/
+
   
-  /* background-image for fade-to-white color of navbar */
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), #F4A261);
+  /* Background gradient for navbar */
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(244, 162, 97, 0.9));
   background-color: transparent;
 }
 
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
-  --text-size:        15px;
+  --text-size:        16px;
   --hover-color:      white;
   --bkgd-color:       #0F2E3D;
 }
 
-/*-- Additional custom styles --*/
-/* Add any additional CSS rules below                      */
+
+/* ============================= */
+/*      Responsive Design        */
+/* ============================= */
+
+@media (max-width: 768px) {
+  html {
+    --title-size: 36px;
+    --body-size: 1rem;
+  }
+
+  .distill-site-header {
+    --title-size: 18px;
+    --text-size: 14px;
+  }
+
+  .distill-site-footer {
+    --text-size: 14px;
+  }
+}
+
+
+/* ============================
+   Additional Custom Styles
+   ============================ */
+
+/* Links */
+a {
+  color: #2A9D8F;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #E76F51;
+}
+
+/* Code Block Styling */
+pre {
+  font-family: var(--mono-font);
+  background-color: #F4F4F4; /* Light gray background */
+  color: #1F1F1F; /* Darker text for contrast */
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 2px solid #D3D3D3;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  white-space: pre-wrap; /* Wraps text */
+  word-wrap: break-word; /* Breaks long words */
+  overflow-x: auto; /* Allows horizontal scroll if absolutely needed */
+  display: block;
+}
+
+/* Ensure code inside <pre> wraps correctly */
+pre code {
+  display: block;
+  white-space: pre-wrap !important; /* Ensures wrapping */
+  word-break: break-word !important; /* Forces break if needed */
+  overflow-wrap: break-word !important; /* Additional text wrap */
+}
+
+/* Ensures inline code snippets are styled separately */
+code {
+  font-family: var(--mono-font);
+  background-color: #E8E8E8;
+  color: #1F1F1F;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
 </style>
 <style type="text/css">
 /* base style */

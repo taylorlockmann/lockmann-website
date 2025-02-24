@@ -1,5 +1,5 @@
 ---
-title: "Where in the world is Taylor Paddling?"
+title: "Where in the world is Taylor paddling?"
 description: |
   A heatmap based on paddling workouts recorded on my Garmin watch
 author:
@@ -23,12 +23,133 @@ library(kableExtra)
 ```
 
 # Introduction
-Over the past two years, I’ve logged dozens of paddling workouts with my Garmin watch. I wanted to visualize where I paddled the most in 2024—so I built this interactive heatmap! Here’s what I learned and how I made it:
+Over the past two years, I’ve logged dozens of paddling workouts with my Garmin watch. I wanted to learn more about my paddling habits over the past year, so I downloaded my Garmin data in multiple formats to use for analyses below. Read till the end to learn how I made a heatmap showing all the areas I paddled in 2024!
 
 # Acquiring the data
-As any data person will tell you, acquiring the data is usually the most tedious part - and it was. In order to get the data I wanted, I had to log into my Garmin account, filter my activities to water sports, and navigate each individual recorded activity in order to download it as a GPX file. This was in order to preserve the location data associated with each activity, which is not available in the summary .csv available for download.
+As any data person will tell you, acquiring the data is usually the most tedious part - and it was. I first logged into Garmin Connect and use their advanced search function to generate a .csv of all my paddling workouts in 2024. This part was easy. But of course I can never do anything basic, so I had to get fancy and I wanted GPS data to do that.
 
-# Processing the data
+In order to get the GPS data I wanted, I had to log into my Garmin account, filter my activities to water sports, and navigate to each individual recorded activity in order to download it as a GPX file. This was in order to preserve the location data associated with each activity, which is not available in the summary .csv I had originally downloaded.
+
+# General stats
+
+```{r echo = FALSE}
+garmin_data <- read.csv("../../data/Activities.csv") %>% 
+  mutate(Date = as.Date(Date, format = "%Y-%m-%d"))
+
+# Ensure numeric columns are properly converted
+garmin_data <- garmin_data %>%
+  mutate(
+    Calories = as.numeric(Calories),
+    Avg.HR = as.numeric(Avg.HR),
+    Max.HR = as.numeric(Max.HR),
+    Training.Stress.Score = as.numeric(Training.Stress.Score.),
+    Total.Strokes = as.numeric(Total.Strokes)
+  )
+```
+
+```{r echo = FALSE, message = FALSE}
+# Load paddling data
+paddling_sf <- st_read("../../data/paddling_data.geojson", quiet = TRUE) %>% 
+  arrange(File, Timestamp)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(sf)
+library(kableExtra)
+
+# --- Summarize Paddling Data ---
+paddling_summary <- paddling_sf %>%
+  group_by(File) %>%
+  summarize(
+    Start_Time = min(Timestamp, na.rm = TRUE),
+    End_Time = max(Timestamp, na.rm = TRUE),
+    Session_Duration_mins = as.numeric(difftime(End_Time, Start_Time, units = "mins")),
+    Distance_miles = max(Cumulative_Distance_km, na.rm = TRUE) * 0.621371
+  ) %>%
+  ungroup()
+
+total_distance_miles <- sum(paddling_summary$Distance_miles, na.rm = TRUE)
+total_time_hours <- sum(paddling_summary$Session_Duration_mins, na.rm = TRUE) / 60
+num_sessions <- nrow(paddling_summary)
+avg_distance_per_session <- mean(paddling_summary$Distance_miles, na.rm = TRUE)
+avg_duration_per_session <- mean(paddling_summary$Session_Duration_mins, na.rm = TRUE)
+earliest_start_time <- format(min(paddling_summary$Start_Time, na.rm = TRUE), "%H:%M:%S")
+latest_end_time <- format(max(paddling_summary$End_Time, na.rm = TRUE), "%H:%M:%S")
+
+# Handle missing values by filtering out NA rows
+garmin_data_clean <- garmin_data %>%
+  filter(!is.na(Avg.HR) & !is.na(Max.HR) & !is.na(Training.Stress.Score.) & !is.na(Total.Strokes))
+
+# Compute Garmin summary safely
+total_calories <- sum(garmin_data$Calories, na.rm = TRUE)
+avg_hr <- ifelse(nrow(garmin_data_clean) > 0, mean(garmin_data_clean$Avg.HR, na.rm = TRUE), NA)
+max_hr <- ifelse(nrow(garmin_data_clean) > 0, max(garmin_data_clean$Max.HR, na.rm = TRUE), NA)
+total_strokes <- sum(garmin_data$Total.Strokes, na.rm = TRUE)
+
+# Ensure no -Inf values
+max_hr <- ifelse(is.infinite(max_hr), NA, max_hr)
+
+# Create summary table
+overall_summary <- data.frame(
+  Metric = c("Total Distance Paddled (miles)", "Total Hours Paddled", "Number of Sessions",
+             "Average Distance per Session (miles)", "Average Duration per Session (mins)",
+             "Earliest Start Time of Day", "Latest End Time of Day",
+             "Total Calories Burned", "Average Heart Rate (bpm)", "Max Heart Rate (bpm)",
+              "Total Strokes"),
+  Value = c(round(total_distance_miles, 2), round(total_time_hours, 2), num_sessions,
+            round(avg_distance_per_session, 2), round(avg_duration_per_session, 2),
+            earliest_start_time, latest_end_time,
+            total_calories, round(avg_hr, 1), max_hr,
+            total_strokes)
+)
+
+# Display summary
+kable(overall_summary, col.names = c("Metric", "Value"))
+
+
+```
+
+On a side note, I don't believe the metric "Latest end time of day" is correct. If it's 11pm, that's wayyy too late to be on the water. If it's 11am, that's far too early to be off the water, because most of our practices are in the evenings. I'm sure something just got recorded wrong there. 
+
+# Trends & Insights
+
+```{r echo = FALSE}
+# Convert distance from meters to km, then to miles
+paddling_sf <- paddling_sf %>%
+  mutate(
+    Distance_km = Distance_m / 1000,       # Convert meters → km
+    Distance_miles = Distance_km / 1.60934, # Convert km → miles
+    YearMonth = format(Timestamp, "%Y-%m") # Extract YYYY-MM for grouping
+  )
+
+# Summarize total miles per month
+monthly_summary <- paddling_sf %>%
+  group_by(YearMonth) %>%
+  summarize(Total_Miles = sum(Distance_miles, na.rm = TRUE)) %>%
+  ungroup()
+
+# Convert YearMonth to a proper date format for ordering
+monthly_summary <- monthly_summary %>%
+  mutate(YearMonth = as.Date(paste0(YearMonth, "-01")))
+
+# Plot bar chart
+ggplot(monthly_summary, aes(x = YearMonth, y = Total_Miles)) +
+  geom_col(fill = "steelblue", width = 25) +  # Bar chart with blue fill
+  theme_minimal() +
+  labs(
+    title = "Total Paddling Distance per Month",
+    x = "Month",
+    y = "Total Distance (Miles)"
+  ) +
+  scale_x_date(date_labels = "%b %Y", date_breaks = "1 month") +  # Format X-axis
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt labels for readability
+```
+
+Quite a normal distribution until we get to change season! And you can bet your ass I did absolutely zero paddling in October. A girl's gotta rest.
+
+# Processing GPS data
 Once I had an individual file for each activity (87 in total!), I had to aggregate it all into one file. I did this in a separate processing script, so that I could save one small, efficient file to this website and its associated GitHub repo. The code below will not run, it's just to showcase how I did this processing.
 
 ```{r eval=FALSE}
@@ -101,95 +222,7 @@ st_write(paddling_sf, "paddling_data.geojson", driver = "GeoJSON", append = FALS
 
 And voila! Now I have a GeoJSON file available to make fun maps with!
 
-But first, stats...
 
-# General stats
-
-
-```{r echo = FALSE, message = FALSE}
-# Load paddling data
-paddling_sf <- st_read("../../data/paddling_data.geojson", quiet = TRUE)  
-
-# Ensure data is sorted by date & time
-paddling_sf <- paddling_sf %>%
-  arrange(File, Timestamp)
-
-# Convert distance to miles (1 km = 0.621371 miles)
-paddling_sf <- paddling_sf %>%
-  mutate(Distance_miles = Cumulative_Distance_km * 0.621371)
-
-# Summarize data
-summary_table <- paddling_sf %>%
-  group_by(File) %>%
-  summarize(
-    Date = unique(Date),  # Get unique date per session
-    Start_Time = min(Timestamp, na.rm = TRUE),  # Earliest recorded time
-    End_Time = max(Timestamp, na.rm = TRUE),    # Latest recorded time
-    Session_Duration_mins = as.numeric(difftime(End_Time, Start_Time, units = "mins")), 
-    Distance_miles = max(Distance_miles, na.rm = TRUE)  # Total distance for session
-  ) %>%
-  ungroup()
-
-# Compute overall statistics
-total_distance_miles <- sum(summary_table$Distance_miles, na.rm = TRUE)
-total_time_hours <- sum(summary_table$Session_Duration_mins, na.rm = TRUE) / 60
-num_sessions <- nrow(summary_table)
-avg_distance_per_session <- mean(summary_table$Distance_miles, na.rm = TRUE)
-avg_duration_per_session <- mean(summary_table$Session_Duration_mins, na.rm = TRUE)
-earliest_start_time <- format(min(summary_table$Start_Time, na.rm = TRUE), "%H:%M:%S")
-latest_end_time <- format(max(summary_table$End_Time, na.rm = TRUE), "%H:%M:%S")
-
-# Create summary data frame
-overall_summary <- data.frame(
-  Metric = c("Total Distance Paddled (miles)", "Total Hours Paddled", "Number of Sessions",
-             "Average Distance per Session (miles)", "Average Duration per Session (mins)",
-             "Earliest Start Time of Day", "Latest End Time of Day"),
-  Value = c(round(total_distance_miles, 2), round(total_time_hours, 2), num_sessions,
-            round(avg_distance_per_session, 2), round(avg_duration_per_session, 2),
-            earliest_start_time, latest_end_time)
-)
-
-# Display as a table in R Markdown
-kable(overall_summary, col.names = c("Metric", "Value"))
-```
-
-On a side note, I don't believe that last metric - "Latest end time of day" - is correct. If it's 11pm, that's wayyy too late to be on the water. If it's 11am, that's far too early to be off the water, because most of our practices are in the evenings. I'm sure something just got recorded wrong there. 
-
-# Trends & Insights
-
-```{r echo = FALSE}
-# Convert distance from meters to km, then to miles
-paddling_sf <- paddling_sf %>%
-  mutate(
-    Distance_km = Distance_m / 1000,       # Convert meters → km
-    Distance_miles = Distance_km / 1.60934, # Convert km → miles
-    YearMonth = format(Timestamp, "%Y-%m") # Extract YYYY-MM for grouping
-  )
-
-# Summarize total miles per month
-monthly_summary <- paddling_sf %>%
-  group_by(YearMonth) %>%
-  summarize(Total_Miles = sum(Distance_miles, na.rm = TRUE)) %>%
-  ungroup()
-
-# Convert YearMonth to a proper date format for ordering
-monthly_summary <- monthly_summary %>%
-  mutate(YearMonth = as.Date(paste0(YearMonth, "-01")))
-
-# Plot bar chart
-ggplot(monthly_summary, aes(x = YearMonth, y = Total_Miles)) +
-  geom_col(fill = "steelblue", width = 25) +  # Bar chart with blue fill
-  theme_minimal() +
-  labs(
-    title = "Total Paddling Distance per Month",
-    x = "Month",
-    y = "Total Distance (Miles)"
-  ) +
-  scale_x_date(date_labels = "%b %Y", date_breaks = "1 month") +  # Format X-axis
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Tilt labels for readability
-```
-
-Quite a normal distribution until we get to change season! And you can bet your ass I did absolutely zero paddling in October. A girl's gotta rest.
 
 # Spatial heatmap!
 
@@ -213,8 +246,6 @@ leaflet() %>%
   )
 ```
 
-
-# Animation
 
 
 

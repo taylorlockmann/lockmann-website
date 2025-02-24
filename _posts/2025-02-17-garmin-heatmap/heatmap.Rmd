@@ -53,7 +53,7 @@ paddling_sf <- st_read("../../data/paddling_data.geojson", quiet = TRUE) %>%
   arrange(File, Timestamp)
 ```
 
-```{r}
+```{r echo = FALSE}
 library(tidyverse)
 library(lubridate)
 library(sf)

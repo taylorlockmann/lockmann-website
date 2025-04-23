@@ -1,0 +1,117 @@
+---
+title: "Earth Month 2025"
+description: |
+  Join me as I harass my friends with fun facts and calls to action for Earth Month 2025.
+author:
+  - name: Taylor
+    url: {}
+date: 2025-02-17
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Background
+
+As an environmental scientist and all-around nerd, it is my moral duty to inform the people I love about all things Earth, ecology, policy, and anything else that affects our natural world. As such, April is my favorite month of the year, and Earth Day my patron holiday.
+
+A few years ago I started texting fun facts to my various friends' group chats following the theme of Earth Month. It became very well-received (or maybe they're just nice to me idk), so this year I decided to write it all down here for your enjoyment as well. 
+
+So please join me in annoying my friends with various Earth Month fun facts, calls to action, rage and hope all at once.
+
+
+# Welcome
+
+🚨 ATTENTION 🚨 
+
+You have all been involuntarily enrolled in Taylor’s Earth Month Facts™️, a weekly dose of eco-truths, because knowledge is power and ignorance is trash (and we do NOT litter). Unsubscribe? Not an option. Stay tuned, tree huggers. 🌎💅
+
+
+# Week 1: The Comeback of the Channel Islands Fox
+
+Wayyyyyy back when (aka in the ‘90s) the Channel Islands fox was circling the extinction drain—fewer than 100 left. The culprits? An ecological chain reaction of the worst kind. DDT wiped out bald eagles, which let golden eagles move in, who then started hunting foxes (instead of their usual fishy snacks). Add in some non-native pigs attracting even more golden eagles, and things got bad fast.
+
+But humans (for once) stepped up with an ambitious recovery plan: Pigs? Removed. Golden eagles? Relocated. Bald eagles? Reintroduced. Foxes? Given a serious population boost.
+
+Thanks to these efforts, the Channel Islands Fox made the fastest recovery of any endangered mammal in U.S. history. By 2016, it was officially removed from the Endangered Species List.
+
+Moral of the story? Ecosystems are like Jenga—pull out the wrong piece (or, you know, poison everything with DDT), and the whole thing collapses. But a little human help (when done right) can make all the difference. We can fix what is broken. 🦊 🦅 🐟 
+
+
+# Bonus Earth Month Fact: Our parks need us.
+
+It’s National Park Advocacy Week, and our national parks are hurting—crumbling trails, understaffed crews, and climate threats stacking up.
+
+Despite all the love parks get, the current administration has proposed major ~~fuckery~~ funding and staffing cuts that would make things worse.
+
+Groups like NPCA are pushing back—demanding Congress fund, fix, and fight for our parks.
+
+**Quick action:** Use this page to tell your reps to take care of the places we all love:
+
+[Prevent Further Cuts to Park Staff and Funding](https://act.npca.org/page/81246/action/1?_ga=2.16724790.1098993988.1744053393-927804209.1744053393)
+
+```{r echo = FALSE}
+knitr::include_url("https://act.npca.org/page/81246/action/1?_ga=2.16724790.1098993988.1744053393-927804209.1744053393")
+```
+
+
+# Week 2: The War for Water in the West
+
+Happy Earth Month, babes — today’s tea: a good old-fashioned government turf war 🫖. The Bureau of Reclamation and the Army Corps of Engineers went head-to-head over who got to control the West’s water. Spoiler: it was messy. 
+
+In the early 1900s, two government agencies were basically in a turf war over who got to play water god in the American West.
+
+💧 The Bureau of Reclamation was created in 1902 to build dams and irrigation projects for small farmers. Their goal? Turn the arid West into an agricultural paradise.
+⚓️ The U.S. Army Corps of Engineers focused on big river navigation and flood control, mainly in the East and South. But they weren’t about to let Reclamation have all the fun.
+
+For decades, these two fought over who controlled dam-building, water rights, and which projects got funded. The rivalry peaked in the 1930s with massive projects like Hoover Dam (Reclamation’s crown jewel) and Bonneville Dam (the Corps’ big win on the Columbia River).
+
+Today, both agencies still shape U.S. water policy—Reclamation dominates the West, while the Army Corps rules the East. But the legacy of their “dam rivalry” lives on in America’s sprawling network of reservoirs, irrigation canals, and hydroelectric power. 🚰
+
+
+# Week 3: How the US Almost Ran Out of Birds
+
+Aloha nerds. Here's your Earth Month Fun Fact:
+
+In the late 1800s and early 1900s, the U.S. came dangerously close to running out of birds — thanks to fashion. Wealthy women were flaunting hats covered in entire birds, not just feathers. We’re talking herons, egrets, owls, even hummingbirds. At the height of the feather craze, some rookeries were being wiped out entirely in a single nesting season just to meet demand.
+
+Hunters were paid to collect feathers—and they did it by the pound. Egrets were especially prized for their delicate plumes, which, fun fact, they only grow during breeding season… meaning the birds were often killed right on their nests, leaving chicks to die. Cute look, huh?
+
+By the early 20th century, bird populations had crashed, and a lot of Americans were like, “Oops?” But not everyone. A group of fierce, fed-up women started organizing—boycotting feathered hats, forming Audubon Societies, and lobbying for laws to stop the slaughter. Their activism helped lead to the Migratory Bird Treaty Act of 1918, which still protects birds today.
+
+So yes, we almost ran out of birds. But thanks to a few bold women who refused to let fashion kill off entire species, we didn’t. Feathers are for birds, not bonnets. 🪶🪿🦆
+
+# Bonus Earth Month Content: Ologies Podcast
+
+My fave podcast has an episode on garbage and sanitation that I highly recommend. Not something you think about often, but so incredibly important to a functioning society.
+
+[Ologies: Discard Anthropology (GARBAGE) Encore with Robin Nagle](https://open.spotify.com/episode/2n34jlL6gYWp6zMjHZhBgj?si=xb0utQtPRo-PQqEgph8CKg&context=spotify%3Ashow%3A5nvRkVMH58SelKZYZFZx1S&nd=1&dlsi=b61f895c150a4750)
+
+```{r echo = FALSE}
+knitr::include_url("https://open.spotify.com/episode/2n34jlL6gYWp6zMjHZhBgj?si=xb0utQtPRo-PQqEgph8CKg&context=spotify%3Ashow%3A5nvRkVMH58SelKZYZFZx1S&nd=1&dlsi=b61f895c150a4750")
+```
+
+# Week 4: Earth Day
+
+Happy Earth Day nerds 🌎 
+
+In honor of the holiday you get this week’s Earth Month fact a day early. Apologies if you’ve heard this one before but I love it so much and it hits close to home. 
+
+Earth Day Exists Because One Guy Got Mad About an Oil Spill—and a Bunch of Hippies, Housewives, and Students Showed Up
+
+In 1969, a massive oil spill off the coast of Santa Barbara turned beaches into sludge and killed thousands of seabirds. It was disgusting, it was devastating, and it was the last straw for Senator Gaylord Nelson (side note: best name ever). He had an idea: what if Americans came together just one day a year to demand a cleaner planet?
+
+So in 1970, the first Earth Day was born. No big budget, no social media—just 20 million people (10% of the U.S. population at the time!) marching, striking, and calling for action. The crowd was a glorious mess of students, farmers, teachers, housewives, and Vietnam War protestors who all agreed on one thing: the Earth was in trouble, and it was time to do something.
+
+And it worked. That first Earth Day helped lead to the creation of the EPA, the Clean Air Act, the Clean Water Act, and more. (Which are all currently in danger but that’s a story for another time)
+
+So next time my parents someone rolls their eyes at your reusable water bottle, remind them that one angry senator and a whole lot of everyday people helped change the course of environmental history.
+
+Happy Earth Day. The planet is lucky to have you. 💙💚
+
+

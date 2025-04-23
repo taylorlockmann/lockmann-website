@@ -6,7 +6,7 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
+    - text: "Blog"
       href: about.html
     - text: "Projects"
       href: blog.html

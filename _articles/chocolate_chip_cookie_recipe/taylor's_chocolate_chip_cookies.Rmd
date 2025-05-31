@@ -1,0 +1,64 @@
+---
+title: "Taylor's Chocolate Chip Cookie Recipe"
+description: |
+  No explanation needed.
+author:
+  - name: Taylor
+    url: {}
+date: 2025-05-30
+output:
+  distill::distill_article:
+    self_contained: false
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Ingredients
+
+1 cup (2 sticks) unsalted butter
+
+3/4 cup granulated sugar
+
+3/4 cup brown sugar
+
+1 tsp vanilla extract
+
+2 eggs
+
+2 1/4 cups all purpose flour
+
+1 tsp salt
+
+1 tsp baking soda
+
+2 cups your chocolate of choice (chips or small pieces)
+
+Flaky salt for sprinkling
+
+
+# Step 1: Brown the butter
+In a small saucepan, melt and cook the butter until the sputtering subsides, and the floating bits of solids start to turn brown. The butter will smell fragrant and nutty. Once it reaches this stage, immediately transfer to a heat proof bowl (make sure to scrape the brown bits off the bottom) and place in the freezer to solidify. We want this butter to be soft, not melted but not frozen solid. Check on it every few mins.
+
+# Step 2: Mix wet ingredients
+- Once butter is somewhat more solid, transfer to a mixing bowl, and add both sugars. Beat together until creamy and fluffy.
+- Add eggs and vanilla, and beat until smooth.
+
+# Step 3: Add dry ingredients
+Add flour, baking soda and salt, and mix until the dough comes together.
+
+# Step 4: Add chocolate
+Gently fold in your chocolate of choice. My personal favorite is Trader Joe's Pound Plus Milk Chocolate Bar with Caramel, Pretzel, Sea Salt. But of course it's seasonal and only available in winter.
+
+# Step 5: Portion & chill
+- Portion your dough out onto a lined baking tray. I like to use a cookie scoop for even sizes. You can overcrowd your pan since we are not baking yet.
+- Place portioned dough in the fridge for at least 1 hour. This is important for texture!!
+
+# Step 6: Salt & bake
+- Preheat oven to 375F
+- Place a couple dough balls onto a new lined baking sheet. Make sure to space out evenly.
+- Top with a sprinkle of Maldon flaky salt on each cookie
+- Bake in oven for 10-15 mins, or until starting to turn golden brown
+- Try not to eat them all at once!

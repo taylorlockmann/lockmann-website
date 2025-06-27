@@ -119,7 +119,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["2025_reading_challenge_files/anchor-4.2.2/anchor.min.js","2025_reading_challenge_files/bowser-1.9.3/bowser.min.js","2025_reading_challenge_files/distill-2.2.21/template.v2.js","2025_reading_challenge_files/header-attrs-2.25/header-attrs.js","2025_reading_challenge_files/jquery-3.6.0/jquery-3.6.0.js","2025_reading_challenge_files/jquery-3.6.0/jquery-3.6.0.min.js","2025_reading_challenge_files/jquery-3.6.0/jquery-3.6.0.min.map","2025_reading_challenge_files/popper-2.6.0/popper.min.js","2025_reading_challenge_files/tippy-6.2.7/tippy-bundle.umd.min.js","2025_reading_challenge_files/tippy-6.2.7/tippy-light-border.css","2025_reading_challenge_files/tippy-6.2.7/tippy.css","2025_reading_challenge_files/tippy-6.2.7/tippy.umd.min.js","2025_reading_challenge_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["2025_reading_challenge_files/anchor-4.2.2/anchor.min.js","2025_reading_challenge_files/bowser-1.9.3/bowser.min.js","2025_reading_challenge_files/distill-2.2.21/template.v2.js","2025_reading_challenge_files/header-attrs-2.25/header-attrs.js","2025_reading_challenge_files/jquery-3.6.0/jquery-3.6.0.js","2025_reading_challenge_files/jquery-3.6.0/jquery-3.6.0.min.js","2025_reading_challenge_files/jquery-3.6.0/jquery-3.6.0.min.map","2025_reading_challenge_files/popper-2.6.0/popper.min.js","2025_reading_challenge_files/tippy-6.2.7/tippy-bundle.umd.min.js","2025_reading_challenge_files/tippy-6.2.7/tippy-light-border.css","2025_reading_challenge_files/tippy-6.2.7/tippy.css","2025_reading_challenge_files/tippy-6.2.7/tippy.umd.min.js","2025_reading_challenge_files/webcomponents-2.0.0/webcomponents.js","any_other_name.jpg","braiding_sweetgrass.jpg","holy_water.jpg","kiss_quotient.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2225,11 +2225,28 @@ html {
    Headings
    ============================ */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
-  letter-spacing: 1.5px;  
-  line-height: 1.8rem; /* Prevents wrapping headers from overlapping */ 
-  color: var(--header-color);
+h1 {
+  font-size: 2.5rem; /* 40px */
+}
+
+h2 {
+  font-size: 2rem;   /* 30px */
+}
+
+h3 {
+  font-size: 1.6rem; /* 25.6px */
+}
+
+h4 {
+  font-size: 1.3rem; /* 20.8px */
+}
+
+h5 {
+  font-size: 1.1rem; /* 17.6px */
+}
+
+h6 {
+  font-size: 1rem;   /* 16px */
 }
 
 
@@ -2287,27 +2304,6 @@ d-appendix {
 }
 
 
-/* ============================= */
-/*      Responsive Design        */
-/* ============================= */
-
-@media (max-width: 768px) {
-  html {
-    --title-size: 36px;
-    --body-size: 1rem;
-  }
-
-  .distill-site-header {
-    --title-size: 18px;
-    --text-size: 14px;
-  }
-
-  .distill-site-footer {
-    --text-size: 14px;
-  }
-}
-
-
 /* ============================
    Additional Custom Styles
    ============================ */
@@ -2357,7 +2353,81 @@ code {
   font-size: 14px;
 }
 
-</style>
+/* Creating a book gallery */
+.book-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.book {
+  width: 160px;
+  text-align: center;
+  font-family: var(--body-font);
+  font-size: 0.95rem;
+  color: var(--body-color);
+}
+
+.book img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.book img:hover {
+  transform: scale(1.05);
+}
+
+/* Creating a reading recap */
+.reading-recap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+  font-family: var(--body-font);
+  color: var(--body-color);
+  font-size: 1.05rem;
+}
+
+.reading-recap img {
+  width: 120px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+
+/* ============================= */
+/*      Responsive Design        */
+/* ============================= */
+
+@media (max-width: 768px) {
+  html {
+    --title-size: 36px;
+    --body-size: 1rem;
+  }
+
+  .distill-site-header {
+    --title-size: 18px;
+    --text-size: 14px;
+  }
+
+  .distill-site-footer {
+    --text-size: 14px;
+  }
+  
+  .reading-recap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reading-recap img {
+    width: 100%;
+    max-width: 240px;
+  }
+}</style>
 <style type="text/css">
 /* base style */
 
@@ -2578,7 +2648,11 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h3>Contents</h3>
 <ul>
 <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
-<li><a href="#the-challenges" id="toc-the-challenges">The Challenges</a></li>
+<li><a href="#the-challenges" id="toc-the-challenges">The Challenges</a>
+<ul>
+<li><a href="#monthly-reading-challenge" id="toc-monthly-reading-challenge">📚 2025 Monthly Reading Challenge</a></li>
+<li><a href="#bonus-books" id="toc-bonus-books">🌟 Bonus Books</a></li>
+</ul></li>
 <li><a href="#monthly-recaps" id="toc-monthly-recaps">Monthly Recaps</a>
 <ul>
 <li><a href="#january-a-short-story-or-essay-in-your-career-field-or-a-field-you-are-interested-in." id="toc-january-a-short-story-or-essay-in-your-career-field-or-a-field-you-are-interested-in.">January: A short story or essay in your career field or a field you are interested in.</a></li>
@@ -2593,52 +2667,227 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>For the past few years I’ve challenged myself to read one more book per year than the last. It’s been great motivation, but I’ve found myself getting a bit bored in my reading patterns. So this year I’ve designed a new challenge: one book per month - 12 books total - each with a different theme chosen by a friend or family member.</p>
 <p>As I solicited themes and genres from my loved ones, I was surprised at just how creative people got with the themes - and how many people wanted to join me in my quest!</p>
 <h1 id="the-challenges">The Challenges</h1>
-<p><strong>January:</strong> A short story or essay in your career field or a field you are interested in.</p>
-<p><strong>February:</strong> A book with a color, plant, or food in it’s name.</p>
-<p><strong>March:</strong> Smut - or romance if that’s more your vibe.</p>
-<p><strong>April:</strong> A book that altered someone’s brain chemistry.</p>
-<p><strong>May:</strong> A middle grade book.</p>
-<p><strong>June:</strong> A book by a trans/non-binary author.</p>
-<p><strong>July:</strong> A book that made someone cry.</p>
-<p><strong>August:</strong> A book by a debut author.</p>
-<p><strong>September:</strong> A book on the banned books list.</p>
-<p><strong>October:</strong> Something based in Greek, Chinese, Scandinavian or Russian mythology.</p>
-<p><strong>November:</strong> A book that was made into a movie that you haven’t read or seen.</p>
-<p><strong>December:</strong> A book that was not originally written in English.</p>
-<p><strong>Bonus Books:</strong></p>
+<style>
+.reading-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  margin: 1em 0;
+}
+
+.reading-table th {
+  background-color: #264653;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-family: "Gelasio", serif;
+  font-size: 1.1rem;
+}
+
+.reading-table td {
+  border: 1px solid #D3D3D3;
+  padding: 10px;
+  background-color: #FAFAFA;
+  color: #1F1F1F;
+}
+
+.reading-table tr:nth-child(even) td {
+  background-color: #F4F4F4;
+}
+
+.bonus-section {
+  margin-top: 2em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+}
+
+.bonus-section ul {
+  padding-left: 1.2em;
+}
+
+.bonus-section li {
+  margin-bottom: 0.5em;
+}
+</style>
+<h3 id="monthly-reading-challenge">📚 2025 Monthly Reading Challenge</h3>
+<table class="reading-table">
+<thead>
+<tr>
+<th>
+Month
+</th>
+<th>
+Prompt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+January
+</td>
+<td>
+A short story or essay in your career field or a field you are interested in.
+</td>
+</tr>
+<tr>
+<td>
+February
+</td>
+<td>
+A book with a color, plant, or food in its name.
+</td>
+</tr>
+<tr>
+<td>
+March
+</td>
+<td>
+Smut – or romance if that’s more your vibe.
+</td>
+</tr>
+<tr>
+<td>
+April
+</td>
+<td>
+A book that altered someone’s brain chemistry.
+</td>
+</tr>
+<tr>
+<td>
+May
+</td>
+<td>
+A middle grade book.
+</td>
+</tr>
+<tr>
+<td>
+June
+</td>
+<td>
+A book by a trans/non-binary author.
+</td>
+</tr>
+<tr>
+<td>
+July
+</td>
+<td>
+A book that made someone cry.
+</td>
+</tr>
+<tr>
+<td>
+August
+</td>
+<td>
+A book by a debut author.
+</td>
+</tr>
+<tr>
+<td>
+September
+</td>
+<td>
+A book on the banned books list.
+</td>
+</tr>
+<tr>
+<td>
+October
+</td>
+<td>
+Something based in Greek, Chinese, Scandinavian or Russian mythology.
+</td>
+</tr>
+<tr>
+<td>
+November
+</td>
+<td>
+A book that was made into a movie that you haven’t read or seen.
+</td>
+</tr>
+<tr>
+<td>
+December
+</td>
+<td>
+A book that was not originally written in English.
+</td>
+</tr>
+</tbody>
+</table>
+<section id="bonus-books" class="bonus-section">
+<h3>🌟 Bonus Books</h3>
 <ul>
-<li><p>Lady Tan’s Circle of Women (Kat)</p></li>
-<li><p>A book written by Shelby Cleland!</p></li>
-<li><p>Go to your last 5-star read on Goodreads, then go to that author’s page, and read another one of their 5-star rated reads. (Shelby)</p></li>
-<li><p>A book with recipes in it that is NOT a cookbook (Haley)</p>
+<li><em>Lady Tan’s Circle of Women</em> (Kat)<br />
+</li>
+<li>A book written by <strong>Shelby Cleland</strong><br />
+</li>
+<li>Go to your last 5-star read on Goodreads, then go to that author’s page, and read another one of their 5-star rated reads. (Shelby)<br />
+</li>
+<li>A book with recipes in it that is <strong>not a cookbook</strong> (Haley)
 <ul>
-<li>Specific recommendation: Mad Honey</li>
+<li>Specific recommendation: <em>Mad Honey</em></li>
 </ul></li>
 </ul>
+</section>
 <h1 id="monthly-recaps">Monthly Recaps</h1>
 <h2 id="january-a-short-story-or-essay-in-your-career-field-or-a-field-you-are-interested-in.">January: A short story or essay in your career field or a field you are interested in.</h2>
-<p><strong>Theme suggested by:</strong> Kalani</p>
-<p><strong>What I read:</strong> Holy Water by Joan Didion</p>
+<div class="reading-recap">
+  <div class="book">
+    <img src="holy_water.jpg" alt="Holy Water">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Kalani</p>
+    <p><strong>What I read:</strong> Holy Water by Joan Didion</p>
+  </div>
+</div>
 <p><strong>Why I picked it:</strong> This book was suggested by a friend of mine that used to work in a similar field (water). I also started this theme late in the month, and a short read was just what I needed.</p>
 <p><strong>My thoughts:</strong> Didion opens, “Some of us who live in arid parts of the world think about water with a reverence others might find excessive.” This was not the case for my household. I was raised to believe that water simply came from the tap - and never gave any thought to where it came from before it made it to my kitchen sink. So long as the faucet worked, nothing else really mattered. This is in stark contrast to the field I work in now, where I not only give great thought to where a utility’s water comes from, but am constantly working towards accounting for every last drop.</p>
 <p>Didion’s essay is a poetic reflection on the physical movement of water through the arid state of California, and how this all-important aspect of life balances on a thin edge of control, dictated by a myriad of agencies: “Los Angeles moves some of it, San Francisco moves some of it, the Bureau of Reclamation’s Central Valley Project moves some of it, and the California State Water Project moves most of the rest of it, moves a vast amount of it, moves more water farther than has ever been moved anywhere.”</p>
 <p>But what really struck me in this essay was a singular line: “The apparent ease of California life is an illusion, and those who believe the illusion real live here in only the most temporary way.” I’ve re-read this line a hundred times, and it captures the essence of Southern California in such a stark, raw way. Life in California is by no means easy, and those who do believe it to be so are those who only pass through - they don’t stay.</p>
 <p>While I may have not understood the significance of the water making its way to my tap as a child, I did have an inkling that not many people who came to California stay. The Los Angeles elite I saw on TV had no idea a little girl from the desert a hundred miles away watched them, and after their red carpet event, they’d jet away to the next location with no thought to the complex network of waterworks that made their event possible, just as I gave no thought to the water in my kitchen tap.</p>
 <h2 id="february-a-book-with-a-color-plant-or-food-in-its-name.">February: A book with a color, plant, or food in it’s name.</h2>
-<p><strong>Theme suggested by:</strong> Kat</p>
-<p><strong>What I read:</strong> Braiding Sweetgrass by Robin Wall Kimmerer</p>
+<div class="reading-recap">
+  <div class="book">
+    <img src="braiding_sweetgrass.jpg" alt="Braiding Sweetgrass">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Kat</p>
+    <p><strong>What I read:</strong> Braiding Sweetgrass by Robin Wall Kimmerer</p>
+  </div>
+</div>
 <p><strong>Why I picked it:</strong> This book had been a work in progress for me for almost a year. I figured this month’s theme was the perfect motivation I needed to actually finish it.</p>
 <p><strong>My thoughts:</strong> This book was beautifully written, but I also have realized that I struggle to read long form non-fiction. I had started the book in 2024, and had fallen asleep nearly every time I read it.</p>
 <p>It was once I realized that I needed to take each chapter as a sort of short-form essay that I began to make progress. Each chapter is in itself a beautiful piece of writing, but when woven together with the other chapters in its section, make a cohesive whole, just as the sweetgrass stalks are woven together in Kimmerer’s stories.</p>
 <p>I am left after reading this book with a feeling of great respect for this work, but the feeling that I missed much of the message. I think I’ll have to slowly re-read this book with my piecemeal methodology to further digest the meaning and calls to action.</p>
 <h2 id="march-smut---or-romance-if-thats-more-your-vibe.">March: Smut - or romance if that’s more your vibe.</h2>
-<p><strong>Theme suggested by:</strong> Frankie</p>
-<p><strong>What I read:</strong> The Kiss Quotient by Helen Hoang</p>
+<div class="reading-recap">
+  <div class="book">
+    <img src="kiss_quotient.jpg" alt="The Kiss Quotient">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Frankie</p>
+    <p><strong>What I read:</strong> The Kiss Quotient by Helen Hoang</p>
+  </div>
+</div>
 <p><strong>Why I picked it:</strong> I received this book as the result of a <em>spicy</em> book exchange for Galentine’s day.</p>
 <p><strong>My thoughts:</strong> Loved this. It is definitely <em>not</em> PG, but the spicy scenes were slow-burning and, for lack of a better term, kinda wholesome? (Gotta love consent!)</p>
 <h2 id="april-a-book-that-altered-someones-brain-chemistry.">April: A book that altered someone’s brain chemistry.</h2>
-<p><strong>Theme suggested by:</strong> Haley</p>
-<p><strong>What I read:</strong> By Any Other Name by Jodi Picoult</p>
+<div class="reading-recap">
+  <div class="book">
+    <img src="any_other_name.jpg" alt="By Any Other Name">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Haley</p>
+    <p><strong>What I read:</strong> By Any Other Name by Jodi Picoult</p>
+  </div>
+</div>
 <p><strong>Why I picked it:</strong> I LOVE me some Shakespeare and a great historical conspiracy theory. I am also a fan of female-centered stories, so the description of this one was right up my alley.</p>
 <p><strong>My thoughts:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

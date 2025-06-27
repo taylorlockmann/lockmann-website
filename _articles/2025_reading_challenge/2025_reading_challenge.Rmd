@@ -25,62 +25,102 @@ As I solicited themes and genres from my loved ones, I was surprised at just how
 
 # The Challenges
 
-**January:** A short story or essay in your career field or a field you are interested in.
+<style>
+.reading-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  margin: 1em 0;
+}
 
+.reading-table th {
+  background-color: #264653;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-family: "Gelasio", serif;
+  font-size: 1.1rem;
+}
 
-**February:** A book with a color, plant, or food in it’s name.
+.reading-table td {
+  border: 1px solid #D3D3D3;
+  padding: 10px;
+  background-color: #FAFAFA;
+  color: #1F1F1F;
+}
 
+.reading-table tr:nth-child(even) td {
+  background-color: #F4F4F4;
+}
 
-**March:** Smut - or romance if that’s more your vibe.
+.bonus-section {
+  margin-top: 2em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+}
 
+.bonus-section ul {
+  padding-left: 1.2em;
+}
 
-**April:** A book that altered someone’s brain chemistry.
+.bonus-section li {
+  margin-bottom: 0.5em;
+}
+</style>
 
+### 📚 2025 Monthly Reading Challenge
 
-**May:** A middle grade book.
+<table class="reading-table">
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Prompt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>January</td><td>A short story or essay in your career field or a field you are interested in.</td></tr>
+    <tr><td>February</td><td>A book with a color, plant, or food in its name.</td></tr>
+    <tr><td>March</td><td>Smut – or romance if that’s more your vibe.</td></tr>
+    <tr><td>April</td><td>A book that altered someone’s brain chemistry.</td></tr>
+    <tr><td>May</td><td>A middle grade book.</td></tr>
+    <tr><td>June</td><td>A book by a trans/non-binary author.</td></tr>
+    <tr><td>July</td><td>A book that made someone cry.</td></tr>
+    <tr><td>August</td><td>A book by a debut author.</td></tr>
+    <tr><td>September</td><td>A book on the banned books list.</td></tr>
+    <tr><td>October</td><td>Something based in Greek, Chinese, Scandinavian or Russian mythology.</td></tr>
+    <tr><td>November</td><td>A book that was made into a movie that you haven’t read or seen.</td></tr>
+    <tr><td>December</td><td>A book that was not originally written in English.</td></tr>
+  </tbody>
+</table>
 
+<div class="bonus-section">
+### 🌟 Bonus Books
 
-**June:** A book by a trans/non-binary author.
-
-
-**July:** A book that made someone cry.
-
-
-**August:** A book by a debut author.
-
-
-**September:** A book on the banned books list. 
-
-
-**October:** Something based in Greek, Chinese, Scandinavian or Russian mythology.
-
-
-**November:** A book that was made into a movie that you haven’t read or seen. 
-
-
-**December:** A book that was not originally written in English.
-
-
-**Bonus Books:**
-
-- Lady Tan’s Circle of Women (Kat)
-
-- A book written by Shelby Cleland!
-
-- Go to your last 5-star read on Goodreads, then go to that author’s page, and read another one of their 5-star rated reads. (Shelby)
-
-- A book with recipes in it that is NOT a cookbook (Haley)
-
-  + Specific recommendation: Mad Honey
+  - *Lady Tan’s Circle of Women* (Kat)  
+  - A book written by **Shelby Cleland**  
+  - Go to your last 5-star read on Goodreads, then go to that author’s page, and read another one of their 5-star rated reads. (Shelby)  
+  - A book with recipes in it that is **not a cookbook** (Haley)  
+    + Specific recommendation: *Mad Honey*
+</div>
 
 
 # Monthly Recaps
 
 ## January: A short story or essay in your career field or a field you are interested in.
 
-**Theme suggested by:** Kalani
+```{=html}
+<div class="reading-recap">
+  <div class="book">
+    <img src="holy_water.jpg" alt="Holy Water">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Kalani</p>
+    <p><strong>What I read:</strong> Holy Water by Joan Didion</p>
+  </div>
+</div>
+```
 
-**What I read:** Holy Water by Joan Didion
 
 **Why I picked it:** This book was suggested by a friend of mine that used to work in a similar field (water). I also started this theme late in the month, and a short read was just what I needed.
 
@@ -95,9 +135,17 @@ While I may have not understood the significance of the water making its way to 
 
 ## February: A book with a color, plant, or food in it’s name.
 
-**Theme suggested by:** Kat
-
-**What I read:** Braiding Sweetgrass by Robin Wall Kimmerer
+```{=html}
+<div class="reading-recap">
+  <div class="book">
+    <img src="braiding_sweetgrass.jpg" alt="Braiding Sweetgrass">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Kat</p>
+    <p><strong>What I read:</strong> Braiding Sweetgrass by Robin Wall Kimmerer</p>
+  </div>
+</div>
+```
 
 **Why I picked it:** This book had been a work in progress for me for almost a year. I figured this month's theme was the perfect motivation I needed to actually finish it.
 
@@ -110,9 +158,18 @@ I am left after reading this book with a feeling of great respect for this work,
 
 ## March: Smut - or romance if that’s more your vibe.
 
-**Theme suggested by:** Frankie
+```{=html}
+<div class="reading-recap">
+  <div class="book">
+    <img src="kiss_quotient.jpg" alt="The Kiss Quotient">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Frankie</p>
+    <p><strong>What I read:</strong> The Kiss Quotient by Helen Hoang</p>
+  </div>
+</div>
+```
 
-**What I read:** The Kiss Quotient by Helen Hoang
 
 **Why I picked it:** I received this book as the result of a *spicy* book exchange for Galentine's day.
 
@@ -121,9 +178,18 @@ I am left after reading this book with a feeling of great respect for this work,
 
 ## April: A book that altered someone’s brain chemistry.
 
-**Theme suggested by:** Haley
+```{=html}
+<div class="reading-recap">
+  <div class="book">
+    <img src="any_other_name.jpg" alt="By Any Other Name">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Haley</p>
+    <p><strong>What I read:</strong> By Any Other Name by Jodi Picoult</p>
+  </div>
+</div>
+```
 
-**What I read:** By Any Other Name by Jodi Picoult
 
 **Why I picked it:** I LOVE me some Shakespeare and a great historical conspiracy theory. I am also a fan of female-centered stories, so the description of this one was right up my alley.
 

@@ -1,22 +1,5 @@
 [
   {
-    "path": "posts/",
-    "title": "Ocean Conditions Dashboard",
-    "description": "At-a-glance view of conditions for paddling in Santa Barbara, CA",
-    "author": [
-      {
-        "name": "Taylor",
-        "url": {}
-      }
-    ],
-    "date": "2025-02-25",
-    "categories": [],
-    "contents": "\r\n\r\nContents\r\nCurrent Wind Conditions\r\nSwell and Wave Height\r\nWave height over time\r\n\r\nVisibility\r\nTides\r\nWater Quality\r\nSummary View\r\n\r\nCurrent Wind Conditions\r\nCourtesty of windy.com\r\n\r\n\r\n\r\n\r\nSwell and Wave Height\r\nWave height based on NOAA/NDBC* Santa Barbara Buoy 46054\r\n*NDBC = National Data Buoy Center\r\n\r\n\r\n\r\n\r\n\r\nDate & Time\r\n\r\n\r\nWave Height (m)\r\n\r\n\r\nDominant Period (s)\r\n\r\n\r\nMean Wave Direction (degrees)\r\n\r\n\r\nWater Temp (degrees C)\r\n\r\n\r\n2025-04-22 20:40\r\n\r\n\r\nNA\r\n\r\n\r\nNA\r\n\r\n\r\nNA\r\n\r\n\r\n13\r\n\r\n\r\n2025-04-22 20:30\r\n\r\n\r\nNA\r\n\r\n\r\nNA\r\n\r\n\r\nNA\r\n\r\n\r\n13\r\n\r\n\r\n2025-04-22 20:20\r\n\r\n\r\n1.5\r\n\r\n\r\n10\r\n\r\n\r\n319\r\n\r\n\r\n13\r\n\r\n\r\nWave height over time\r\n\r\n\r\nList of 2\r\n $ axis.text.x:List of 11\r\n  ..$ family       : NULL\r\n  ..$ face         : NULL\r\n  ..$ colour       : NULL\r\n  ..$ size         : NULL\r\n  ..$ hjust        : num 1\r\n  ..$ vjust        : NULL\r\n  ..$ angle        : num 45\r\n  ..$ lineheight   : NULL\r\n  ..$ margin       : NULL\r\n  ..$ debug        : NULL\r\n  ..$ inherit.blank: logi FALSE\r\n  ..- attr(*, \"class\")= chr [1:2] \"element_text\" \"element\"\r\n $ plot.title :List of 11\r\n  ..$ family       : NULL\r\n  ..$ face         : chr \"bold\"\r\n  ..$ colour       : NULL\r\n  ..$ size         : num 14\r\n  ..$ hjust        : NULL\r\n  ..$ vjust        : NULL\r\n  ..$ angle        : NULL\r\n  ..$ lineheight   : NULL\r\n  ..$ margin       : NULL\r\n  ..$ debug        : NULL\r\n  ..$ inherit.blank: logi FALSE\r\n  ..- attr(*, \"class\")= chr [1:2] \"element_text\" \"element\"\r\n - attr(*, \"class\")= chr [1:2] \"theme\" \"gg\"\r\n - attr(*, \"complete\")= logi FALSE\r\n - attr(*, \"validate\")= logi TRUE\r\n\r\nVisibility\r\n\r\n\r\n\r\nTides\r\n\r\n\r\n\r\nWater Quality\r\nI am still trying to find a good source of real-time data for this section! All I can find currently are local agencies that publish pdf reports of their findings, which would require web scraping skills that I have not quite developed yet. Let me know if you know of a source!\r\n\r\n\r\n# Placeholder for EPA/local agency data\r\n# Example: Fetch and display water quality reports\r\n\r\n\r\nSummary View\r\n\r\n\r\n# Placeholder for formatted summary (tables, icons, key metrics)\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/dashboard_files/figure-html5/unnamed-chunk-1-1.png",
-    "last_modified": "2025-04-22T21:11:04-07:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/2025-02-17-garmin-heatmap/",
     "title": "Where in the world is Taylor paddling?",
     "description": "A heatmap based on paddling workouts recorded on my Garmin watch",

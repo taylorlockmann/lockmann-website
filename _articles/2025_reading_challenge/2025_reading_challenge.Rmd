@@ -112,7 +112,9 @@ As I solicited themes and genres from my loved ones, I was surprised at just how
 ```{=html}
 <div class="reading-recap">
   <div class="book">
-    <img src="holy_water.jpg" alt="Holy Water">
+    <a href="https://www.goodreads.com/book/show/421.The_White_Album" target="_blank">
+      <img src="holy_water.jpg" alt="Holy Water">
+    </a>
   </div>
   <div>
     <p><strong>Theme suggested by:</strong> Kalani</p>

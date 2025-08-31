@@ -1,0 +1,47 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="EXIF_BitsPerSample">8 8 8</MDI>
+    <MDI key="EXIF_ColorSpace">65535</MDI>
+    <MDI key="EXIF_DateTime">2014:10:14 19:55:41</MDI>
+    <MDI key="EXIF_ExifVersion">0221</MDI>
+    <MDI key="EXIF_Orientation">1</MDI>
+    <MDI key="EXIF_PhotometricInterpretation">2</MDI>
+    <MDI key="EXIF_PixelXDimension">1368</MDI>
+    <MDI key="EXIF_PixelYDimension">598</MDI>
+    <MDI key="EXIF_ResolutionUnit">2</MDI>
+    <MDI key="EXIF_SamplesPerPixel">3</MDI>
+    <MDI key="EXIF_Software">Adobe Photoshop CS5.1 Windows</MDI>
+    <MDI key="EXIF_XResolution">(96)</MDI>
+    <MDI key="EXIF_YResolution">(96)</MDI>
+  </Metadata>
+  <Metadata domain="xml:XMP" format="xml">
+    <?xpacket begin="&#xFEFF;" id="W5M0MpCehiHzreSzNTczkc9d"?>
+    <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.0-c061 64.140949, 2010/12/07-10:57:01        ">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmpMM:DocumentID="39AEB4908270C8514BC3C75843C65C45" xmpMM:InstanceID="xmp.iid:C840B2270054E411B73581D26221AA67" xmpMM:OriginalDocumentID="39AEB4908270C8514BC3C75843C65C45" dc:format="image/jpeg" photoshop:ColorMode="1" photoshop:ICCProfile="Dot Gain 20%" xmp:CreateDate="2013-03-08T23:00-08:00" xmp:ModifyDate="2014-10-14T19:55:41-07:00" xmp:MetadataDate="2014-10-14T19:55:41-07:00" xmp:CreatorTool="Adobe Photoshop CS5.1 Windows">
+          <xmpMM:History>
+            <rdf:Seq>
+              <rdf:li stEvt:action="saved" stEvt:instanceID="xmp.iid:C640B2270054E411B73581D26221AA67" stEvt:when="2014-10-14T19:53:50-07:00" stEvt:softwareAgent="Adobe Photoshop CS5.1 Windows" stEvt:changed="/" />
+              <rdf:li stEvt:action="saved" stEvt:instanceID="xmp.iid:C740B2270054E411B73581D26221AA67" stEvt:when="2014-10-14T19:53:50-07:00" stEvt:softwareAgent="Adobe Photoshop CS5.1 Windows" stEvt:changed="/" />
+              <rdf:li stEvt:action="saved" stEvt:instanceID="xmp.iid:C840B2270054E411B73581D26221AA67" stEvt:when="2014-10-14T19:55:41-07:00" stEvt:softwareAgent="Adobe Photoshop CS5.1 Windows" stEvt:changed="/" />
+            </rdf:Seq>
+          </xmpMM:History>
+        </rdf:Description>
+      </rdf:RDF>
+    </x:xmpmeta>
+    <?xpacket end="w"?>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_MINIMUM">51</MDI>
+      <MDI key="STATISTICS_MAXIMUM">253</MDI>
+      <MDI key="STATISTICS_MEAN">218.77239766082</MDI>
+      <MDI key="STATISTICS_STDDEV">20.221808289778</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+    <Metadata domain="IMAGE_STRUCTURE">
+      <MDI key="COMPRESSION">JPEG</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

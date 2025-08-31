@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-As I usually say in any bio of myself, I love geospatial storytelling. The art of maps has a certain poetry about it when viewed in historical contexts and across decades. 
+The art of maps has a certain poetry about it when viewed in historical contexts and across decades. This, to me, is even more true when using historical maps to find lost features in today's world. 
 
 For this project, I wanted to take this storytelling spin to a historical place near me. Much of my life and work revolves around my own area in Santa Barbara, so I decided to go outside of my usual haunts to a place I wasn't as familiar with (and, admittedly, had much easier access to historic records) - Los Angeles.
 

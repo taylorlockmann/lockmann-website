@@ -8,11 +8,11 @@ author:
 date: 2024-01-27
 output:   
   distill::distill_article:
-    self_contained: false
+    self_contained: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 # Background
@@ -79,6 +79,7 @@ See the annotated code for generating the diagram below:
 library(networkD3)
 library(here)
 library(stringr)
+library(htmltools)
 
 # Count the number of occurrences of each combination of "from" and "to"
 counts <- dplyr::count(job_data2, from, to) %>% 
@@ -112,14 +113,14 @@ q <- sankeyNetwork(Links = counts_df,
                    sinksRight = FALSE,
                    fontSize = 12)
 
-q
+tagList(q)
 
 
 ```
 
 ## Adding counts using JavaScript
 
-I wanted to add the counts from each node to the next, and the best way I could find to do this was using JavaScript. Now I know absolutely nothing about JavaScript, but I was able to lift and shift some code into this diagram thanks to [this Stack Overflow post.](https://stackoverflow.com/questions/71264918/r-networkd3-sankey-add-value-to-node-label/71265618#71265618).
+I wanted to add the counts from each node to the next, and the best way I could find to do this was using JavaScript. Now I know absolutely nothing about JavaScript, but I was able to lift and shift some code into this diagram thanks to [this Stack Overflow post.](https://stackoverflow.com/questions/71264918/r-networkd3-sankey-add-value-to-node-label/71265618#71265618)
 
 ```{r layout = "l-screen"}
 # Add node count to the diagram

@@ -140,7 +140,8 @@ While I may have not understood the significance of the water making its way to 
 ```{=html}
 <div class="reading-recap">
   <div class="book">
-    <img src="braiding_sweetgrass.jpg" alt="Braiding Sweetgrass">
+    <a href="https://app.thestorygraph.com/books/50ef96a1-9370-4a58-9d66-1770db58a86d" target="_blank">
+      <img src="braiding_sweetgrass.jpg" alt="Braiding Sweetgrass">
   </div>
   <div>
     <p><strong>Theme suggested by:</strong> Kat</p>
@@ -163,7 +164,8 @@ I am left after reading this book with a feeling of great respect for this work,
 ```{=html}
 <div class="reading-recap">
   <div class="book">
-    <img src="kiss_quotient.jpg" alt="The Kiss Quotient">
+    <a href="https://app.thestorygraph.com/books/5c953a21-c7dd-4ae7-834a-09ae57fbb4e4" target="_blank">
+      <img src="kiss_quotient.jpg" alt="The Kiss Quotient">
   </div>
   <div>
     <p><strong>Theme suggested by:</strong> Frankie</p>
@@ -183,7 +185,8 @@ I am left after reading this book with a feeling of great respect for this work,
 ```{=html}
 <div class="reading-recap">
   <div class="book">
-    <img src="any_other_name.jpg" alt="By Any Other Name">
+    <a href="https://app.thestorygraph.com/books/a44c8833-0680-4890-990a-2c7e989b5e3a" target="_blank">
+     <img src="any_other_name.jpg" alt="By Any Other Name">
   </div>
   <div>
     <p><strong>Theme suggested by:</strong> Haley</p>
@@ -207,7 +210,8 @@ Which segues nicely into a broader discussion at the heart of this book: If a wo
 ```{=html}
 <div class="reading-recap">
   <div class="book">
-    <img src="island_blue_dolphins.jpg" alt="Island of the Blue Dolphins">
+    <a href="https://app.thestorygraph.com/books/c732517b-6f6e-4662-bd58-90096b0471b6" target="_blank">
+      <img src="island_blue_dolphins.jpg" alt="Island of the Blue Dolphins">
   </div>
   <div>
     <p><strong>Theme suggested by:</strong> Shelby</p>
@@ -217,9 +221,11 @@ Which segues nicely into a broader discussion at the heart of this book: If a wo
 ```
 
 
-**Why I picked it:** 
+**Why I picked it:** I remember reading this book in maybe second or third grade, and it takes a special meaning now that I live in Santa Barbara.
 
-**My thoughts:**
+**My thoughts:** I *sobbed* when the main character's little brother died, as I'm particularly protective of my own little brother. But beyond that heartbreak, I was quite surprised that this book feels like it provides little in the way of emotional depth. The majority of the story tells us what the narrator is doing - the actions that she is taking every day to survive. There is very little introspection other than very simple descriptions of being frightened.
+
+On a side note, it took me WAY too long to figure out that the "devilfish" is an octopus. I had some weird images in my head before that.
 
 
 ## June: A book by a trans or non-binary author
@@ -227,7 +233,8 @@ Which segues nicely into a broader discussion at the heart of this book: If a wo
 ```{=html}
 <div class="reading-recap">
   <div class="book">
-    <img src="confessions_fox.jpg" alt="Confessions of the Fox">
+    <a href="https://app.thestorygraph.com/books/46f07872-ebfd-4b5d-bab1-ef37b045b281" target="_blank">
+     <img src="confessions_fox.jpg" alt="Confessions of the Fox">
   </div>
   <div>
     <p><strong>Theme suggested by:</strong> Alana</p>
@@ -244,7 +251,28 @@ Which segues nicely into a broader discussion at the heart of this book: If a wo
 One theme I found especially intriguing was the idea that Jack's story was not merely his own, but a collective history written by and for trans and queer people. Jack's story stands as a sort of folk hero-esque vehicle for which those marginalized groups share their own experiences, views of the world, and histories. So while the "true" story of the "real" Jack may not be faithfully told, a wider, more nuanced and varied picture is revealed. 
 
 
+## Interlude: Off-track
+
+This is the point in the year where I fell off this reading challenge. I didn't complete all the books I wanted to in the year, as things in my personal and professional life came a bit off the rails. 
+
+However, I decided that since I set this challenge, I could also make the rules. I decided to continue on with the book list, even though the timing was no longer consistent. At least I still read some interesting books.
+
+
 ## July: A book that made someone cry
 
+```{=html}
+<div class="reading-recap">
+  <div class="book">
+    <a href="https://app.thestorygraph.com/books/f6753343-c819-4a55-a31c-091efba5a1a8" target="_blank">
+      <img src="addie_larue.jpg" alt="The Invisible Life of Addie LaRue">
+  </div>
+  <div>
+    <p><strong>Theme suggested by:</strong> Missy </p>
+    <p><strong>What I read:</strong> The Invisible Life of Addie LaRue by V.E. Schwab</p>
+  </div>
+</div>
+```
 
+**Why I picked it:** I had actually read this before, and wasn't a fan the first time around. However, a friend said that another friend of hers had recently read the book for the first time and had "sobbed all the way through". I figured that was a good sign to give it another try.
 
+**My thoughts:** I do feel like I found some more meaning in this book the second time around, but I still can't say it made me cry. I find the concept of Luc to be a fascinating character, as you only scratch the surface of his powers as an ancient god. I do think this book appeals to the introspective folks who can relate to the struggles of the characters: not being seen, wanting to be wanted. However I don't find myself drawn to those themes on an emotional level. I still find it to be a lovely book with beautiful writing, just not very emotionally resonant for myself.

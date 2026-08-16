@@ -8,7 +8,7 @@ author:
 date: 2025-02-17
 output:
   distill::distill_article:
-    self_contained: false
+    self_contained: true
     toc: true
 ---
 
@@ -21,6 +21,8 @@ library(sf)
 library(jsonlite)
 library(leaflet.extras)
 library(kableExtra)
+library(htmlwidgets)
+options(htmlwidgets.TOJSON_ARGS = list(na = "null"))
 ```
 
 # Introduction
@@ -169,8 +171,8 @@ gpx_files <- list.files(gpx_folder, pattern = "\\.gpx$", full.names = TRUE)
 print(gpx_files)  # This should show a list of file paths
 
 # Spot-check 
-gpx_sample <- read_xml(gpx_files[1])  # Read first file to make sure it worked
-print(gpx_sample)
+# gpx_sample <- read_xml(gpx_files[1])  # Read first file to make sure it worked
+# print(gpx_sample)
 
 # Now use a function to parse all of the GPX files:
 extract_gpx_distance <- function(file) {
@@ -239,7 +241,7 @@ heat_data <- st_coordinates(paddling_sf)
 
 ```{r echo = FALSE}
 # Create heatmap
-leaflet() %>%
+map <- leaflet() %>%
   addProviderTiles("CartoDB.Positron") %>%
   addHeatmap(
     lng = heat_data[, 1], 
@@ -247,6 +249,8 @@ leaflet() %>%
     radius = 10, 
     blur = 15
   )
+
+map
 ```
 
 

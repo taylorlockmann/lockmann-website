@@ -117,10 +117,9 @@ catalina %>%
 
 
 
+# SCORA'S CATALINA CROSSING
 
 [ 15 RACES ] [ 919 FINISHES ] [ 107 CLUBS ] [ 28 SBOCC FINISHES ]
-
-# SCORA'S CATALINA CROSSING
 
 Every year the Southern California Outrigger Racing Association (SCORA) hosts the Catalina Crossing US Outrigger Championships, an outrigger race from Newport to Avalon, Catalina Island and vice versa. It is a 9-man change (relay) race and while the race is advertised as 28 miles, my own Garmin watch has clocked closer to 30. 
 
@@ -138,7 +137,7 @@ This analysis focuses only on the Catalina crossing, and specifically only on th
 No race was held in 2020 due to Covid restrictions.
 
 
-2022's values appear much faster - this is because this year was not a true crossing. Hurricane Hilary caused residual conditions to be too dangerous for a crossing and instead, an out-and-back race was held at Newport. Consider 2022 to be an outlier in this data.
+2022's values appear much faster - this is because this year was not a true crossing. Hurricane Hilary caused residual conditions to be too dangerous for a crossing and instead, an out-and-back race was held at Newport. **Consider 2022 to be an outlier in this data.**
 
 
 # THE RACE HAS GOTTEN FASTER
@@ -210,6 +209,8 @@ ggplotly(
     hoverlabel = list(align = "left")
   )
 ```
+
+*Note: in this graph and several following, dots lower on the y-axis indicate faster finishing times.*
 
 ## How the race's fastest times have changed
 
@@ -374,7 +375,7 @@ ggplot(
 
 ## How much faster are Unlimiteds?
 
-Unlimited canoes show a consistently faster median finishing time than Spec canoes, but the gap between the two has varied considerably from year to year. This suggests that the growing prevalence of Unlimited canoes could indeed be contributing to faster overall Catalina times—but the changing gap over time also indicates that fleet composition alone does not explain the full story.
+Unlimited canoes show a consistently faster median finishing time than Spec canoes, but the gap between the two has varied considerably from year to year. While in general the Unlimiteds are faster than the Specs, crew, conditions, and various other factors contribute to the gap between the two vessels types.
 
 ```{r boat-type-summary}
 boat_type_summary <- catalina %>%
@@ -653,7 +654,7 @@ ggplotly(
 
 This view highlights years when Santa Barbara punched above or below the middle of its division, independent of the overall pace of the race. It also makes it easier to distinguish a genuinely strong result from a fast finishing time that occurred in an unusually fast or slow year.
 
-* Note: Percentiles are calculated within each year/division field; results from small fields should be interpreted cautiously.*
+*Note: Percentiles are calculated within each year/division field; results from small fields should be interpreted cautiously.*
 
 
 ## Santa Barbara's best years
@@ -668,7 +669,7 @@ sbocc_best <- sbocc %>%
   arrange(desc(performance_percentile)) %>%
   select(
     Year = year,
-    Place = place,
+    `Overall Place` = place,
     Division = division,
     `Boat Type` = boat_type,
     Time = adjusted_finish_time,
@@ -685,23 +686,16 @@ datatable(
   options = list(
     pageLength = 10,
     order = list(list(6, "desc")),
-    autoWidth = TRUE,
-    columnDefs = list(
-      list(width = "8%", targets = 0),
-      list(width = "8%", targets = 1),
-      list(width = "25%", targets = 2),
-      list(width = "14%", targets = 3),
-      list(width = "12%", targets = 4),
-      list(width = "12%", targets = 5),
-      list(width = "15%", targets = 6)
-    )
+    autoWidth = FALSE,
+    scrollX = FALSE
   ),
+  width = "100%",
   rownames = FALSE
 )
 ```
 
 
-# EXPLORE THE RESULTS
+# EXPLORE THE DATA
 
 The table below contains the complete historical Catalina Crossing record used in this analysis. Use the column filters to explore particular years, clubs, divisions, or boat types. The search and download tools can also be used to investigate the underlying results in more detail.
 
@@ -727,9 +721,9 @@ datatable(
   rownames = FALSE,
   class = "display compact stripe",
   options = list(
-    pageLength = 20,
+    pageLength = 5,
     scrollX = TRUE,
-    autoWidth = TRUE,
+    autoWidth = FALSE,
     dom = "Bfrtip",
     buttons = c("copy", "csv"),
     order = list(
@@ -826,7 +820,7 @@ ggplot(
 
 
 # ABOUT THE DATA
-Methodology
-Start-time assumptions
-Club-name standardization
-Limitations
+
+This data was compiled from historical race results [available from SCORA's website](https://www.scora.org/race-results/). The data has been cleaned and organized, but some errors may exist. Please let me know if you find any errors!
+
+
